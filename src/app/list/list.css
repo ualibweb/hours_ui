@@ -1,0 +1,16 @@
+.hours-list{
+    position: relative;
+    max-width: 650px;
+}
+
+.hours-list .fa-info-circle:hover{
+    cursor: help;
+}
+
+.hours-list-child{
+    color: #555;
+}
+
+.hours-list-child > td:first-of-type{
+    padding-left: 30px !important;
+}
