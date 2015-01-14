@@ -6,5 +6,5 @@ angular.module('hours', [
     'hours.list'
 ])
 
-.constant('JSON_URL', 'http://wwwdev.lib.ua.edu/libhours2/getJSON.php')
+.constant('JSON_URL', 'https://wwwdev2.lib.ua.edu/libhours2/getJSON.php')
 
