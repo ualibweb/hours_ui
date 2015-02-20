@@ -4,12 +4,13 @@ angular.module('hours.list', [])
         var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
         var elm = $element.find('h2');
         $scope.hoursList = {};
+        $scope.libID = 1;
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
         hoursFactory.getList()
             .success(function(data){
-                var list = setStatus(data.libraries)
+                var list = setStatus(data.libraries);
                 $scope.hoursList = list;
                 $animate.leave(spinner);
             })
@@ -46,6 +47,9 @@ angular.module('hours.list', [])
             return h;
         }
 
+        $scope.selectLib = function(library){
+            $scope.libID = library.id;
+        };
 
     }])
 
