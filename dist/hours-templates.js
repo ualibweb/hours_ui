@@ -1,49 +1,4 @@
-angular.module('hours.templates', ['calendar/calendar.tpl.html', 'list/list.tpl.html']);
-
-angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("calendar/calendar.tpl.html",
-    "<div class=\"calendar table-responsive\">\n" +
-    "    <nav class=\"navbar navbar-default navbar-embedded\">\n" +
-    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-left\" ng-click=\"prevMonth()\">\n" +
-    "            <span class=\"fa fa-angle-left\"></span>\n" +
-    "        </button>\n" +
-    "        <p class=\"navbar-text navbar-center\">{{calendar[libID - 1].cal[curMonth].month}}</p>\n" +
-    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-right\" ng-click=\"nextMonth()\">\n" +
-    "            <span class=\"fa fa-angle-right\"></span>\n" +
-    "        </button>\n" +
-    "    </nav>\n" +
-    "    <table class=\"table table-bordered table-condensed\">\n" +
-    "        <thead>\n" +
-    "        <tr>\n" +
-    "            <td>Sun</td>\n" +
-    "            <td>Mon</td>\n" +
-    "            <td>Tue</td>\n" +
-    "            <td>Wed</td>\n" +
-    "            <td>Thur</td>\n" +
-    "            <td>Fri</td>\n" +
-    "            <td>Sat</td>\n" +
-    "        </tr>\n" +
-    "        </thead>\n" +
-    "        <tbody>\n" +
-    "            <tr ng-repeat=\"week in calendar[libID - 1].cal[curMonth].weeks\">\n" +
-    "                <td ng-repeat=\"day in week\" ng-class=\"day.class\">\n" +
-    "                    <div style=\"width:100%;height:100%;\" popover=\"{{day.exc}}\" popover-trigger=\"mouseenter\" popover-placement=\"top\">\n" +
-    "                        <div class=\"date\">\n" +
-    "                            {{day.ts * 1000 | date:'d'}}\n" +
-    "                        </div>\n" +
-    "                        <div class=\"hours\">\n" +
-    "                            {{day.hoursFrom}}\n" +
-    "                            <span ng-show=\"day.hoursFrom != day.hoursTo\">\n" +
-    "                                <br>{{day.hoursTo}}\n" +
-    "                            </span>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                </td>\n" +
-    "            </tr>\n" +
-    "        </tbody>\n" +
-    "    </table>\n" +
-    "</div>");
-}]);
+angular.module('hours.templates', ['list/list.tpl.html']);
 
 angular.module("list/list.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("list/list.tpl.html",
@@ -51,7 +6,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "<div class=\"responsive-table\">\n" +
     "    <table class=\"table table-hover\">\n" +
     "        <tbody ng-repeat=\"lib in hoursList track by $index\">\n" +
-    "            <tr ng-click=\"selectLib(lib)\">\n" +
+    "            <tr>\n" +
     "                <td>{{lib.name}}</td>\n" +
     "                <td>{{lib.hours}}</td>\n" +
     "                <td ng-class=\"lib.status.css\">{{lib.status.text}}</td>\n" +
@@ -59,7 +14,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "                    <span class=\"fa fa-lg fa-info-circle\" ng-if=\"lib.description\" tooltip=\"{{lib.description}}\"></span>\n" +
     "                </td>\n" +
     "            </tr>\n" +
-    "            <tr class=\"hours-list-child\" ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
+    "            <tr class=\"hours-list-child\" ng-repeat=\"child in lib.children track by $index\">\n" +
     "                <td>{{child.name}}</td>\n" +
     "                <td>{{child.hours}}</td>\n" +
     "                <td ng-class=\"child.status.css\">{{child.status.text}}</td>\n" +

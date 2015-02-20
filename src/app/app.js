@@ -3,11 +3,8 @@ angular.module('hours', [
     'ui.bootstrap',
     'hours.common',
     'hours.templates',
-    'hours.list',
-    'hours.calendar'
+    'hours.list'
 ])
 
 .constant('JSON_URL', 'https://wwwdev2.lib.ua.edu/libhours2/getJSON.php')
-
-
 
