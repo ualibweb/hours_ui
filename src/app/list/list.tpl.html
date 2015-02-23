@@ -2,7 +2,7 @@
 <div class="responsive-table">
     <table class="table table-hover">
         <tbody ng-repeat="lib in hoursList track by $index">
-            <tr>
+            <tr ng-click="selectLib(lib)">
                 <td>{{lib.name}}</td>
                 <td>{{lib.hours}}</td>
                 <td ng-class="lib.status.css">{{lib.status.text}}</td>
@@ -10,7 +10,7 @@
                     <span class="fa fa-lg fa-info-circle" ng-if="lib.description" tooltip="{{lib.description}}"></span>
                 </td>
             </tr>
-            <tr class="hours-list-child" ng-repeat="child in lib.children track by $index">
+            <tr class="hours-list-child" ng-repeat="child in lib.children track by $index" ng-click="selectLib(child)">
                 <td>{{child.name}}</td>
                 <td>{{child.hours}}</td>
                 <td ng-class="child.status.css">{{child.status.text}}</td>

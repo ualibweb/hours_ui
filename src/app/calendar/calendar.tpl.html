@@ -1,0 +1,41 @@
+<div class="calendar table-responsive">
+    <nav class="navbar navbar-default navbar-embedded">
+        <button type="button" class="btn btn-default navbar-btn navbar-left" ng-click="prevMonth()">
+            <span class="fa fa-angle-left"></span>
+        </button>
+        <p class="navbar-text navbar-center">{{calendar[libID - 1].cal[curMonth].month}}</p>
+        <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="nextMonth()">
+            <span class="fa fa-angle-right"></span>
+        </button>
+    </nav>
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <td>Sun</td>
+            <td>Mon</td>
+            <td>Tue</td>
+            <td>Wed</td>
+            <td>Thur</td>
+            <td>Fri</td>
+            <td>Sat</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="week in calendar[libID - 1].cal[curMonth].weeks">
+                <td ng-repeat="day in week" ng-class="day.class">
+                    <div style="width:100%;height:100%;" popover="{{day.exc}}" popover-trigger="mouseenter" popover-placement="top">
+                        <div class="date">
+                            {{day.ts * 1000 | date:'d'}}
+                        </div>
+                        <div class="hours">
+                            {{day.hoursFrom}}
+                            <span ng-show="day.hoursFrom != day.hoursTo">
+                                <br>{{day.hoursTo}}
+                            </span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
