@@ -7,7 +7,7 @@ angular.module('hours', [
     'hours.calendar'
 ])
 
-.constant('JSON_URL', 'https://wwwdev2.lib.ua.edu/libhours2/getJSON.php')
+.constant('JSON_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
 
 
 
@@ -19,7 +19,7 @@ angular.module('hours.calendar', [])
         $scope.curMonth = 0;
         $scope.calendar = [];
 
-        hoursFactory.getCalendar()
+        hoursFactory.getList("calendar")
             .success(function(data) {
                 console.dir(data);
                 $scope.calendar = data;
@@ -102,13 +102,8 @@ angular.module('common.hours', [])
 
     .factory('hoursFactory', ['$http', 'JSON_URL', function hoursFactory($http, url){
         return {
-            getList: function(params){
-                params = angular.isDefined(params) ? params : {};
-                return $http({method: 'GET', url: url, params: params})
-            },
-            getCalendar: function(params){
-                params = angular.isDefined(params) ? params : {calendar : 1};
-                return $http({method: 'GET', url: url, params: params})
+            getList: function(request){
+                return $http({method: 'GET', url: url + request, params : {}})
             }
         }
     }]);
@@ -123,7 +118,7 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList()
+        hoursFactory.getList("today")
             .success(function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;

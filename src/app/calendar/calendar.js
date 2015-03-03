@@ -5,7 +5,7 @@ angular.module('hours.calendar', [])
         $scope.curMonth = 0;
         $scope.calendar = [];
 
-        hoursFactory.getCalendar()
+        hoursFactory.getList("calendar")
             .success(function(data) {
                 console.dir(data);
                 $scope.calendar = data;
