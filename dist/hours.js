@@ -132,19 +132,21 @@ angular.module('hours.list', [])
             var h = [];
 
             for (var i = 0, len = hours.length; i < len; i++){
+                var text = 'open';
+                var css = 'label label';
                 var status = {
-                    text: 'open',
-                    css: 'label label-success'
+                    text: text,
+                    css: css+'-success'
                 };
 
-                if (hours[i].timeLeft <= 7200){
+                if (hours[i].timeLeft <= 7200 && hours[i].timeLeft > 0){
                     if (hours[i].isOpen) status.text = 'closing soon';
                     else status.text = 'opening soon';
-                    status.css = 'label label-warning';
+                    status.css = css+'-warning';
                 }
                 else if (!hours[i].isOpen){
                     status.text = 'closed';
-                    status.css = 'label label-danger';
+                    status.css = css+'-danger';
                 }
 
                 hours[i].status = status;
