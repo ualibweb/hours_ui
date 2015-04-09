@@ -7,7 +7,7 @@ angular.module('hours', [
     'hours.calendar'
 ])
 
-.constant('JSON_URL', 'https://wwwdev2.lib.ua.edu/libhours2/getJSON.php')
+.constant('HOURS_API_URL', '/libhours2/getJSON.php')
 
 
 
@@ -100,7 +100,7 @@ angular.module('hours.common', [
 ])
 angular.module('common.hours', [])
 
-    .factory('hoursFactory', ['$http', 'JSON_URL', function hoursFactory($http, url){
+    .factory('hoursFactory', ['$http', 'HOURS_API_URL', function hoursFactory($http, url){
         return {
             getList: function(params){
                 params = angular.isDefined(params) ? params : {};
@@ -137,19 +137,21 @@ angular.module('hours.list', [])
             var h = [];
 
             for (var i = 0, len = hours.length; i < len; i++){
+                var text = 'open';
+                var css = 'label label';
                 var status = {
-                    text: 'open',
-                    css: 'text-success'
+                    text: text,
+                    css: css+'-success'
                 };
 
-                if (hours[i].timeLeft <= 7200){
+                if (hours[i].timeLeft <= 7200 && hours[i].timeLeft > 0){
                     if (hours[i].isOpen) status.text = 'closing soon';
                     else status.text = 'opening soon';
-                    status.css = 'text-warning';
+                    status.css = css+'-warning';
                 }
                 else if (!hours[i].isOpen){
                     status.text = 'closed';
-                    status.css = 'text-danger';
+                    status.css = css+'-danger';
                 }
 
                 hours[i].status = status;
@@ -171,7 +173,7 @@ angular.module('hours.list', [])
     .directive('hoursList', [function hoursList(){
         return {
             restrict: 'AC',
-            controller: 'ListCtrl',
-            templateUrl: 'list/list.tpl.html'
+            templateUrl: 'list/list.tpl.html',
+            controller: 'ListCtrl'
         }
     }]);
