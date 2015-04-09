@@ -7,7 +7,7 @@ angular.module('hours', [
     'hours.calendar'
 ])
 
-.constant('JSON_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
+.constant('HOURS_API_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
 
 
 
