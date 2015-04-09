@@ -1,9 +1,6 @@
 .hours-list{
     position: relative;
     max-width: 650px;
-    background-color: rgba(248, 248, 248, .9);
-    box-shadow: 1px 1px 5px 0 rgba(20, 16, 14, .5);
-    padding: 0 15px;
 }
 
 .hours-list .fa-info-circle:hover{
@@ -16,16 +13,4 @@
 
 .hours-list-child > td:first-of-type{
     padding-left: 30px !important;
-}
-
-.hours-list .table > tbody + tbody, .hours-list .table > tbody > tr > td{
-    border: none;
-}
-
-.hours-list .table > tbody > tr > td > a{
-    font-weight: bold;
-}
-
-.hours-list .table > tbody > tr > td > a:hover{
-    text-decoration: none;
 }

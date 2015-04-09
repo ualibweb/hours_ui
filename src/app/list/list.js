@@ -8,7 +8,7 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList()
+        hoursFactory.getList("today")
             .success(function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;

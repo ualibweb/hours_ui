@@ -7,7 +7,7 @@ angular.module('hours', [
     'hours.calendar'
 ])
 
-.constant('HOURS_API_URL', '/libhours2/getJSON.php')
+.constant('HOURS_API_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
 
 
 
@@ -19,7 +19,7 @@ angular.module('hours.calendar', [])
         $scope.curMonth = 0;
         $scope.calendar = [];
 
-        hoursFactory.getCalendar()
+        hoursFactory.getList("calendar")
             .success(function(data) {
                 console.dir(data);
                 $scope.calendar = data;
@@ -102,13 +102,8 @@ angular.module('common.hours', [])
 
     .factory('hoursFactory', ['$http', 'HOURS_API_URL', function hoursFactory($http, url){
         return {
-            getList: function(params){
-                params = angular.isDefined(params) ? params : {};
-                return $http({method: 'GET', url: url, params: params})
-            },
-            getCalendar: function(params){
-                params = angular.isDefined(params) ? params : {calendar : 1};
-                return $http({method: 'GET', url: url, params: params})
+            getList: function(request){
+                return $http({method: 'GET', url: url + request, params : {}})
             }
         }
     }]);
@@ -123,7 +118,7 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList()
+        hoursFactory.getList("today")
             .success(function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;
@@ -137,21 +132,19 @@ angular.module('hours.list', [])
             var h = [];
 
             for (var i = 0, len = hours.length; i < len; i++){
-                var text = 'open';
-                var css = 'label label';
                 var status = {
-                    text: text,
-                    css: css+'-success'
+                    text: 'open',
+                    css: 'label label-success'
                 };
 
-                if (hours[i].timeLeft <= 7200 && hours[i].timeLeft > 0){
+                if (hours[i].timeLeft <= 7200){
                     if (hours[i].isOpen) status.text = 'closing soon';
                     else status.text = 'opening soon';
-                    status.css = css+'-warning';
+                    status.css = 'label label-warning';
                 }
                 else if (!hours[i].isOpen){
                     status.text = 'closed';
-                    status.css = css+'-danger';
+                    status.css = 'label label-danger';
                 }
 
                 hours[i].status = status;
