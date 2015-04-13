@@ -2,6 +2,7 @@ angular.module('hours.templates', ['calendar/calendar.tpl.html', 'list/list.tpl.
 
 angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("calendar/calendar.tpl.html",
+    "<h2>{{calendar[libID - 1].library.name}} Calendar</h2>\n" +
     "<div class=\"calendar table-responsive\">\n" +
     "    <nav class=\"navbar navbar-default navbar-embedded\">\n" +
     "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-left\" ng-click=\"prevMonth()\">\n" +

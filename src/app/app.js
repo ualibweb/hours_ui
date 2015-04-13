@@ -9,5 +9,8 @@ angular.module('hours', [
 
 .constant('HOURS_API_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
 
+.controller('hoursCtrl', ['$scope', function hoursCtrl($scope){
+    $scope.libID = 1;
+}])
 
 
