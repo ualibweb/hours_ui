@@ -1,9 +1,5 @@
 angular.module('common.hours', [])
 
-    .factory('hoursFactory', ['$http', 'HOURS_API_URL', function hoursFactory($http, url){
-        return {
-            getList: function(request){
-                return $http({method: 'GET', url: url + request, params : {}})
-            }
-        }
+    .factory('hoursFactory', ['$resource', function($resource){
+        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view");
     }]);

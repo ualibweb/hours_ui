@@ -1,5 +1,6 @@
 angular.module('hours', [
     'ngAnimate',
+    'ngResource',
     'ui.bootstrap',
     'hours.common',
     'hours.templates',
