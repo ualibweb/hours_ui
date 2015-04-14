@@ -1,5 +1,6 @@
 angular.module('hours', [
     'ngAnimate',
+    'ngResource',
     'ui.bootstrap',
     'hours.common',
     'hours.templates',
@@ -19,9 +20,11 @@ angular.module('hours.calendar', [])
         $scope.curMonth = 0;
         $scope.calendar = [];
 
-        hoursFactory.getList("calendar")
-            .success(function(data) {
-                console.dir(data);
+        // Use $resource().query() because calendar is returns as array
+        // See "Returns" section of $resource usage docs: https://code.angularjs.org/1.3.15/docs/api/ngResource/service/$resource#usage
+        hoursFactory.query({view: 'calendar'},
+            function(data) {
+                //console.dir(data);
                 $scope.calendar = data;
                 //determine class for each day
                 $scope.calendar.forEach(function(calendar){
@@ -73,8 +76,8 @@ angular.module('hours.calendar', [])
                                 calendar.cal[m].weeks[w][d].class = className;
                             }
                 });
-            })
-            .error(function(data, status, headers, config) {
+            },
+            function(data, status, headers, config) {
                 console.log(data);
             });
 
@@ -100,12 +103,8 @@ angular.module('hours.common', [
 ])
 angular.module('common.hours', [])
 
-    .factory('hoursFactory', ['$http', 'HOURS_API_URL', function hoursFactory($http, url){
-        return {
-            getList: function(request){
-                return $http({method: 'GET', url: url + request, params : {}})
-            }
-        }
+    .factory('hoursFactory', ['$resource', function($resource){
+        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view");
     }]);
 
 angular.module('hours.list', [])
@@ -118,13 +117,13 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList("today")
-            .success(function(data){
+        hoursFactory.get({view: 'today'},
+            function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;
                 $animate.leave(spinner);
-            })
-            .error(function(msg){
+            },
+            function(msg){
                 console.log(msg);
             });
 

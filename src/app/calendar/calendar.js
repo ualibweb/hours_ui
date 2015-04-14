@@ -5,9 +5,11 @@ angular.module('hours.calendar', [])
         $scope.curMonth = 0;
         $scope.calendar = [];
 
-        hoursFactory.getList("calendar")
-            .success(function(data) {
-                console.dir(data);
+        // Use $resource().query() because calendar is returns as array
+        // See "Returns" section of $resource usage docs: https://code.angularjs.org/1.3.15/docs/api/ngResource/service/$resource#usage
+        hoursFactory.query({view: 'calendar'},
+            function(data) {
+                //console.dir(data);
                 $scope.calendar = data;
                 //determine class for each day
                 $scope.calendar.forEach(function(calendar){
@@ -59,8 +61,8 @@ angular.module('hours.calendar', [])
                                 calendar.cal[m].weeks[w][d].class = className;
                             }
                 });
-            })
-            .error(function(data, status, headers, config) {
+            },
+            function(data, status, headers, config) {
                 console.log(data);
             });
 
