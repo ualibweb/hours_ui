@@ -4,7 +4,6 @@ angular.module('hours.list', [])
         var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
         var elm = $element.find('h2');
         $scope.hoursList = {};
-        $scope.libID = 1;
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
