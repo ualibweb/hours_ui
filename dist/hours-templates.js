@@ -2,14 +2,16 @@ angular.module('hours.templates', ['calendar/calendar.tpl.html', 'list/list.tpl.
 
 angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("calendar/calendar.tpl.html",
-    "<h2>{{calendar[libID - 1].library.name}} Calendar</h2>\n" +
+    "<h2>{{calendar.cal[libID - 1].library.name}} Calendar</h2>\n" +
     "<div class=\"calendar table-responsive\">\n" +
     "    <nav class=\"navbar navbar-default navbar-embedded\">\n" +
-    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-left\" ng-click=\"prevMonth()\">\n" +
+    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-left\" ng-click=\"prevMonth()\"\n" +
+    "                ng-disabled=\"curMonth == 0\">\n" +
     "            <span class=\"fa fa-angle-left\"></span>\n" +
     "        </button>\n" +
-    "        <p class=\"navbar-text navbar-center\">{{calendar[libID - 1].cal[curMonth].month}}</p>\n" +
-    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-right\" ng-click=\"nextMonth()\">\n" +
+    "        <p class=\"navbar-text navbar-center\">{{calendar.cal[libID - 1].calendar[curMonth].month}}</p>\n" +
+    "        <button type=\"button\" class=\"btn btn-default navbar-btn navbar-right\" ng-click=\"nextMonth()\"\n" +
+    "                ng-disabled=\"curMonth == nMonths - 1\">\n" +
     "            <span class=\"fa fa-angle-right\"></span>\n" +
     "        </button>\n" +
     "    </nav>\n" +
@@ -26,7 +28,7 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "        </tr>\n" +
     "        </thead>\n" +
     "        <tbody>\n" +
-    "            <tr ng-repeat=\"week in calendar[libID - 1].cal[curMonth].weeks\">\n" +
+    "            <tr ng-repeat=\"week in calendar.cal[libID - 1].calendar[curMonth].weeks\">\n" +
     "                <td ng-repeat=\"day in week\" ng-class=\"day.class\">\n" +
     "                    <div style=\"width:100%;height:100%;\" popover=\"{{day.exc}}\" popover-trigger=\"mouseenter\" popover-placement=\"top\">\n" +
     "                        <div class=\"date\">\n" +

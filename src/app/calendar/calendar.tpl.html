@@ -1,11 +1,13 @@
-<h2>{{calendar[libID - 1].library.name}} Calendar</h2>
+<h2>{{calendar.cal[libID - 1].library.name}} Calendar</h2>
 <div class="calendar table-responsive">
     <nav class="navbar navbar-default navbar-embedded">
-        <button type="button" class="btn btn-default navbar-btn navbar-left" ng-click="prevMonth()">
+        <button type="button" class="btn btn-default navbar-btn navbar-left" ng-click="prevMonth()"
+                ng-disabled="curMonth == 0">
             <span class="fa fa-angle-left"></span>
         </button>
-        <p class="navbar-text navbar-center">{{calendar[libID - 1].cal[curMonth].month}}</p>
-        <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="nextMonth()">
+        <p class="navbar-text navbar-center">{{calendar.cal[libID - 1].calendar[curMonth].month}}</p>
+        <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="nextMonth()"
+                ng-disabled="curMonth == nMonths - 1">
             <span class="fa fa-angle-right"></span>
         </button>
     </nav>
@@ -22,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="week in calendar[libID - 1].cal[curMonth].weeks">
+            <tr ng-repeat="week in calendar.cal[libID - 1].calendar[curMonth].weeks">
                 <td ng-repeat="day in week" ng-class="day.class">
                     <div style="width:100%;height:100%;" popover="{{day.exc}}" popover-trigger="mouseenter" popover-placement="top">
                         <div class="date">

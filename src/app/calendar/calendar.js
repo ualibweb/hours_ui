@@ -5,26 +5,18 @@ angular.module('hours.calendar', [])
         function calendarCtrl($scope, $element, $animate, hoursFactory, nMonths){
         $scope.curMonth = 0;
         $scope.calendar = [];
+        $scope.nMonths = nMonths;
         var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
         var elm = $element.find('h2');
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList("calendar/initial")
+        hoursFactory.getList("calendar")
             .success(function(data) {
-                console.log("Initial data loaded");
                 $scope.calendar = data;
-                $scope.processClasses(2);
-                hoursFactory.getList("calendar")
-                    .success(function(data) {
-                        $scope.calendar = data;
-                        $scope.processClasses(nMonths);
-                        $animate.leave(spinner);
-                        console.dir($scope.calendar);
-                    })
-                    .error(function(data, status, headers, config) {
-                        console.log('Error: ' + data);
-                    });
-            })
+                $scope.processClasses(nMonths);
+                $animate.leave(spinner);
+                console.dir($scope.calendar);
+             })
             .error(function(data, status, headers, config) {
                 console.log('Initial Error: ' + data);
             });
@@ -39,7 +31,7 @@ angular.module('hours.calendar', [])
         };
         //determine class for each day
         $scope.processClasses = function(numMonths){
-            $scope.calendar.forEach(function(calendar){
+            $scope.calendar.cal.forEach(function(calendar){
                 for (var m = 0; m < numMonths; m++)
                     for (var w = 0; w < 6; w++)
                         for (var d = 0; d < 7; d++){
@@ -48,7 +40,7 @@ angular.module('hours.calendar', [])
                             var hours = "";
                             var exc = "";
                             var dayClass = "";
-                            var day = calendar.cal[m].weeks[w][d];
+                            var day = calendar.calendar[m].weeks[w][d];
                             if (typeof day.date != "undefined")
                                 date = day.date;
                             if (typeof day.hours != "undefined")
@@ -85,7 +77,7 @@ angular.module('hours.calendar', [])
                             if ((date.length == 0) && (hours.length > 0) && (exc.length == 0) && (hours != 'Closed'))
                                 className = "next-month";
 
-                            calendar.cal[m].weeks[w][d].class = className;
+                            calendar.calendar[m].weeks[w][d].class = className;
                         }
             });
         };
