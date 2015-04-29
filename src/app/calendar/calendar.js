@@ -51,7 +51,7 @@ angular.module('hours.calendar', [])
                                 dayClass = " today";
 
                             if ((date.length == 0) && (hours.length == 0))
-                                className = "prev-month";
+                                className = "prev-month" + dayClass;
                             else
                             if ((date.length > 0) && (exc.length > 0) && (hours != 'Closed'))
                                 className = "exception" + dayClass;
