@@ -7,13 +7,13 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList("today")
-            .success(function(data){
+        hoursFactory.get({view: 'today'},
+            function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;
                 $animate.leave(spinner);
-            })
-            .error(function(msg){
+            },
+            function(msg){
                 console.log(msg);
             });
 

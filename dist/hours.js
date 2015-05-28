@@ -1,42 +1,108 @@
-angular.module('hours', [
+angular.module('ualib.hours', [
     'ngAnimate',
+    'ngResource',
     'ui.bootstrap',
+    'angular.filter',
     'hours.common',
     'hours.templates',
-    'hours.list',
-    'hours.calendar'
+    'hours.list'
 ])
 
 .constant('HOURS_API_URL', '//wwwdev2.lib.ua.edu/libhours2/api/')
 
 .controller('hoursCtrl', ['$scope', function hoursCtrl($scope){
     $scope.libID = 1;
-}])
+}]);
+
+// Temporary alias for hours module to not break dependencies not yet updated
+angular.module('hours', ['ualib.hours']);
 
 
 
 angular.module('hours.calendar', [])
     .constant('NUM_MONTHS', 6)
 
-    .controller('calendarCtrl', ['$scope', '$element', '$animate', 'hoursFactory', 'NUM_MONTHS',
-        function calendarCtrl($scope, $element, $animate, hoursFactory, nMonths){
-        $scope.curMonth = 0;
-        $scope.calendar = [];
-        $scope.nMonths = nMonths;
-        var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
-        var elm = $element.find('h2');
-        $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
+    .service('CalendarService', ['hoursFactory', '$rootScope', '$location', function(hoursFactory, $rootScope, $location){
+        var self = this;
+        var calData;
+        this.cal = {
+            lid: 0,
+            month: 0,
+            library: ''
+        };
 
-        hoursFactory.getList("calendar")
-            .success(function(data) {
-                $scope.calendar = data;
-                $scope.processClasses(nMonths);
-                $animate.leave(spinner);
-                console.dir($scope.calendar);
-             })
-            .error(function(data, status, headers, config) {
+        // query the API resource to get all calendar data
+        this.query = function(){
+            // Using .query() instead of .get() since calendar resource is an Array
+            // See "Returns" section of $resource Usage docs: https://code.angularjs.org/1.2.28/docs/api/ngResource/service/$resource#usage
+            return hoursFactory.query({view: 'calendar'}, function(data){
+                console.log(data);
+                return data;
+            }, function(data, status, headers, config) {
                 console.log('Initial Error: ' + data);
             });
+        };
+
+        function paramsToService(){
+            var params = $location.search();
+
+        }
+
+    }])
+    .controller('CalendarCtrl', ['$scope', '$element', '$animate', '$location', 'CalendarService', function calendarCtrl($scope, $element, $animate, $location, CalendarService){
+        var self = this; //Avoid scope conflicts in closure statements
+        var calData = [];
+        $scope.curMonth = 0;
+        $scope.cal = CalendarService;
+
+        /*$scope.cal.query()
+            .$promise.then(function(data){
+                $scope.calendar = data;
+            });*/
+
+        function paramsToScope(){
+            $scope.cal.lid = $location.search('lid') || 0;
+            $scope.cal.month = $location.search('month') || 0;
+        }
+
+        /*var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
+        var elm = $element.find();
+        $animate.enter(spinner, elm, angular.element(elm[0].lastChild));*/
+
+        /*hoursFactory.query({view: 'calendar'},
+            function(data){
+                calData = data;
+                $animate.leave(spinner);
+            },
+            function(msg){
+                console.log(msg);
+            });
+
+        this.getCal = function(lid){
+            lid = angular.isDefined(lid) ? (lid-1) : 0;
+            var deferred = $q.defer();
+            var cal = calData[lid];
+            $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
+
+            $q.when(cal)
+                .then(function(){
+                    $scope.calendar.library = cal.library.name;
+                    $scope.calendar.month = cal.cal[$scope.currMonth].month;
+                    $scope.calendar.cal = cal.cal;
+                })
+        };*/
+
+
+
+        /*hoursFactory.query({view: 'calendar'}, function(data) {
+            console.log("Initial data loaded");
+            $scope.calendar = data;
+            $scope.processClasses(nMonths);
+            $animate.leave(spinner);
+            console.dir($scope.calendar);
+        }, function(data, status, headers, config) {
+            console.log('Initial Error: ' + data);
+        });
 
         $scope.nextMonth = function(){
             if ($scope.curMonth < nMonths - 1)
@@ -48,7 +114,7 @@ angular.module('hours.calendar', [])
         };
         //determine class for each day
         $scope.processClasses = function(numMonths){
-            $scope.calendar.cal.forEach(function(calendar){
+            $scope.calendar.forEach(function(calendar){
                 for (var m = 0; m < numMonths; m++)
                     for (var w = 0; w < 6; w++)
                         for (var d = 0; d < 7; d++){
@@ -57,7 +123,7 @@ angular.module('hours.calendar', [])
                             var hours = "";
                             var exc = "";
                             var dayClass = "";
-                            var day = calendar.calendar[m].weeks[w][d];
+                            var day = calendar.cal[m].weeks[w][d];
                             if (typeof day.date != "undefined")
                                 date = day.date;
                             if (typeof day.hours != "undefined")
@@ -68,7 +134,7 @@ angular.module('hours.calendar', [])
                                 dayClass = " today";
 
                             if ((date.length == 0) && (hours.length == 0))
-                                className = "prev-month" + dayClass;
+                                className = "prev-month";
                             else
                             if ((date.length > 0) && (exc.length > 0) && (hours != 'Closed'))
                                 className = "exception" + dayClass;
@@ -94,32 +160,108 @@ angular.module('hours.calendar', [])
                             if ((date.length == 0) && (hours.length > 0) && (exc.length == 0) && (hours != 'Closed'))
                                 className = "next-month";
 
-                            calendar.calendar[m].weeks[w][d].class = className;
+                            calendar.cal[m].weeks[w][d].class = className;
                         }
             });
-        };
+        };*/
     }])
 
+
     .directive('hoursCalendar', [function(){
-    return {
-        restrict: 'A',
-        templateUrl: 'calendar/calendar.tpl.html',
-        controller: 'calendarCtrl'
-    }
-}])
+        return {
+            restrict: 'AC',
+            templateUrl: 'calendar/calendar.tpl.html',
+            controller: 'CalendarCtrl'
+        }
+    }])
+
+    .directive('hoursCalendarDay', [function(){
+        return {
+            restrict: 'EC',
+            replace: true,
+            scope: {
+                day: '@'
+            },
+            link: function(scope, elm){
+                var styles = [];
+                if (angular.isUndefined(scope.day.date)){
+                    styles.push('not-current-month');
+                }
+                else if (scope.day.today){
+                    styles.push('today');
+                }
+                if (angular.isDefined(scope.day.exec)){
+                    styles.push('exception');
+                }
+                if (angular.isDefined(scope.day.hours) == 'Closed'){
+                    styles.push('closed');
+                }
+
+                if (styles.length > 0){
+                    var toAdd = styles.join(' ');
+                    elm.addClass(toAdd);
+                }
+            }
+        }
+    }]);
 angular.module('hours.common', [
     'common.hours'
 ])
 angular.module('common.hours', [])
 
-    .factory('hoursFactory', ['$http', 'HOURS_API_URL', function hoursFactory($http, url){
-        return {
-            getList: function(request){
-                return $http({method: 'GET', url: url + request, params : {}})
-            }
-        }
+    .factory('hoursFactory', ['$resource', function($resource){
+        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view", {cache: true});
     }]);
 
+angular.module('ualib.hours')
+
+    .directive('libHoursToday', ['hoursFactory', '$filter', function(hoursFactory, $filter){
+        return {
+            restrict: 'EAC',
+            replace: true,
+            scope: {
+                library: '@'
+            },
+            templateUrl: 'lib-hours-today/lib-hours-today.tpl.html',
+            controller: function($scope, $element){
+                var library = angular.isDefined($scope.library) ? $scope.library : 'gorgas';
+                hoursFactory.get({view: 'today'},
+                    function(data){
+                        var lib = $filter('filter')(data.libraries, {name: library});
+                        $scope.today = setStatus(lib[0]);
+                        $element.addClass('loaded');
+
+                    },
+                    function(msg){
+                        console.log(msg);
+                    });
+
+
+                //TODO: Rewrite hours ListCtrl to handle both single library and list views - setting status here is redundant
+                function setStatus(hours){
+                    var text = 'open';
+                    var css = 'label label';
+                    var status = {
+                        text: text,
+                        css: css+'-success'
+                    };
+
+                    if (hours.timeLeft <= 7200 && hours.timeLeft > 0){
+                        if (hours.isOpen) status.text = 'closing soon';
+                        else status.text = 'opening soon';
+                        status.css = css+'-warning';
+                    }
+                    else if (!hours.isOpen){
+                        status.text = 'closed';
+                        status.css = css+'-danger';
+                    }
+                    hours.status = status;
+                    return hours;
+                }
+
+            }
+        }
+    }])
 angular.module('hours.list', [])
 
     .controller('ListCtrl', ['$scope', '$element', '$animate', 'hoursFactory', function ListCtrl($scope, $element, $animate, hoursFactory){
@@ -129,13 +271,13 @@ angular.module('hours.list', [])
 
         $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
 
-        hoursFactory.getList("today")
-            .success(function(data){
+        hoursFactory.get({view: 'today'},
+            function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;
                 $animate.leave(spinner);
-            })
-            .error(function(msg){
+            },
+            function(msg){
                 console.log(msg);
             });
 
