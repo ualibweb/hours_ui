@@ -1,14 +1,20 @@
-<h2>{{calendar[libID - 1].library.name}} Calendar</h2>
-<div class="calendar table-responsive">
+<h2>Calendar</h2>
+<div class="cal-container">
     <nav class="navbar navbar-default navbar-embedded">
         <button type="button" class="btn btn-default navbar-btn navbar-left" ng-click="prevMonth()">
             <span class="fa fa-angle-left"></span>
         </button>
-        <p class="navbar-text navbar-center">{{calendar[libID - 1].cal[curMonth].month}}</p>
+        <p class="navbar-text navbar-center">{{calendar.cal[curMonth].month}}</p>
         <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="nextMonth()">
             <span class="fa fa-angle-right"></span>
         </button>
     </nav>
+    <div class="cal-month">
+        <div class="cal-week" ng-repeat="week in calendar.weeks">
+            <div class="cal-day" ng-repeat="day in week" hours-calendar-day day=day"></div>
+        </div>
+    </div>
+    <!--
     <table class="table table-bordered table-condensed">
         <thead>
         <tr>
@@ -38,5 +44,5 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table>-->
 </div>

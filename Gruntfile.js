@@ -1,4 +1,7 @@
 module.exports = function(grunt){
+    // Load all tasks
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         html2js: {
@@ -23,10 +26,20 @@ module.exports = function(grunt){
                 options: {
                     process: true
                 }
-            },
-            css: {
-                src: ['src/**/*.css'],
-                dest: 'dist/hours.css'
+            }
+        },
+        less: {
+            dist: {
+                files: {
+                    'dist/hours.css': ['src/**/*.less', 'src/**/*.css']
+                }
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    'dist/hours.min.js': ['dist/hours-templates.js', 'dist/hours.js']
+                }
             }
         },
       bump: {
@@ -49,9 +62,6 @@ module.exports = function(grunt){
       }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-html2js');
-    grunt.loadNpmTasks('grunt-bump');
-
-    grunt.registerTask('default', ['html2js', 'concat']);
+    grunt.registerTask('default', ['html2js', 'concat', 'less']);
+    grunt.registerTask('build', ['default', 'uglify']);
 };
