@@ -12,7 +12,14 @@ angular.module('ualib.hours')
                 var library = angular.isDefined($scope.library) ? $scope.library : 'gorgas';
                 hoursFactory.get({view: 'today'},
                     function(data){
-                        var lib = $filter('filter')(data.libraries, {name: library});
+                        var libraries = [];
+                        for (var lib in data.libraries){
+                            libraries.push(data.libraries[lib]);
+                            if (data.libraries[lib].hasOwnProperty('children')){
+                                libraries = libraries.concat(data.libraries[lib]['children']);
+                            }
+                        }
+                        var lib = $filter('filter')(libraries, {name: $scope.library});
                         $scope.today = setStatus(lib[0]);
                         $element.addClass('loaded');
 

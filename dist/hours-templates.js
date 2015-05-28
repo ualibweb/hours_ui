@@ -26,9 +26,11 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "            <span class=\"fa fa-angle-right\"></span>\n" +
     "        </button>\n" +
     "    </nav>\n" +
-    "    <div class=\"cal-month\">\n" +
-    "        <div class=\"cal-week\" ng-repeat=\"week in calendar.weeks\">\n" +
-    "            <div class=\"cal-day\" ng-repeat=\"day in week\" hours-calendar-day day=day\"></div>\n" +
+    "    <div class=\"col-month-cotnainer\">\n" +
+    "        <div class=\"cal-month\" ng-repeat=\"month in cal.calendar\">\n" +
+    "            <div class=\"cal-week\" ng-repeat=\"week in month.calendar.weeks\">\n" +
+    "                <!--<div class=\"cal-day\" ng-repeat=\"day in week\" hours-calendar-day day=day\"></div>-->\n" +
+    "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "    <!--\n" +
