@@ -1,16 +1,33 @@
-.hours-list{
-    position: relative;
-    max-width: 650px;
+.cal-month .cal-month-row {
+  height: 16.66666667%;
+}
+.cal-month .cal-day {
+  width: 14.28571429%;
 }
 
-.hours-list .fa-info-circle:hover{
-    cursor: help;
+.library-hours-today {
+  position: relative;
+  height: 80px;
+  opacity: 0;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.library-hours-today.loaded {
+  opacity: 1;
 }
 
-.hours-list-child{
-    color: #555;
+.hours-list {
+  position: relative;
+  max-width: 650px;
 }
-
-.hours-list-child > td:first-of-type{
-    padding-left: 30px !important;
+.hours-list .fa-info-circle:hover {
+  cursor: help;
+}
+.hours-list-child {
+  color: #555;
+}
+.hours-list-child > td:first-of-type {
+  padding-left: 30px !important;
 }
