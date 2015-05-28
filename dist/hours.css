@@ -15,7 +15,16 @@
   transition: all 0.2s;
 }
 .library-hours-today.loaded {
+  height: auto;
   opacity: 1;
+}
+.library-hours-today > h2,
+.library-hours-today .h2 {
+  margin-top: 0;
+}
+.library-hours-today > h3,
+.library-hours-today .h3 {
+  margin-top: 5px;
 }
 
 .hours-list {

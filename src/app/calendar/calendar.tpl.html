@@ -9,9 +9,11 @@
             <span class="fa fa-angle-right"></span>
         </button>
     </nav>
-    <div class="cal-month">
-        <div class="cal-week" ng-repeat="week in calendar.weeks">
-            <div class="cal-day" ng-repeat="day in week" hours-calendar-day day=day"></div>
+    <div class="col-month-cotnainer">
+        <div class="cal-month" ng-repeat="month in cal.calendar">
+            <div class="cal-week" ng-repeat="week in month.calendar.weeks">
+                <!--<div class="cal-day" ng-repeat="day in week" hours-calendar-day day=day"></div>-->
+            </div>
         </div>
     </div>
     <!--

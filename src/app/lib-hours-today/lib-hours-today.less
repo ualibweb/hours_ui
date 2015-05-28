@@ -7,7 +7,17 @@
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 
+  //TODO: move opacity template loading into ualib.ui as a it's own directive
   &.loaded {
+    height: auto;
     opacity: 1;
+  }
+
+  > h2,.h2,{
+    margin-top: 0;
+  }
+
+  > h3, .h3{
+    margin-top: 5px;
   }
 }
