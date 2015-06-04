@@ -1,22 +1,11 @@
-<h2>Calendar</h2>
-<div class="cal-container">
+<div class="calendar">
     <nav class="navbar navbar-default navbar-embedded">
-        <button type="button" class="btn btn-default navbar-btn navbar-left" ng-click="prevMonth()">
+        <button type="button" class="btn btn-primary navbar-btn navbar-left" ng-class="{'disabled': params.month <= 0}" ng-disabled="params.month <= 0" ng-click="getPrevMonth()">
             <span class="fa fa-angle-left"></span>
         </button>
-        <p class="navbar-text navbar-center">{{calendar.cal[curMonth].month}}</p>
-        <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="nextMonth()">
-            <span class="fa fa-angle-right"></span>
-        </button>
+        <h2 class="navbar-text navbar-center">{{cal.month}}</h2>
+        <button type="button" class="btn btn-primary navbar-btn navbar-right" ng-class="{'disabled': params.month >= 5}" ng-disabled="params.month >= 5" ng-click="getNextMonth()"><span class="fa fa-angle-right"></span></button>
     </nav>
-    <div class="col-month-cotnainer">
-        <div class="cal-month" ng-repeat="month in cal.calendar">
-            <div class="cal-week" ng-repeat="week in month.calendar.weeks">
-                <!--<div class="cal-day" ng-repeat="day in week" hours-calendar-day day=day"></div>-->
-            </div>
-        </div>
-    </div>
-    <!--
     <table class="table table-bordered table-condensed">
         <thead>
         <tr>
@@ -30,21 +19,23 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="week in calendar[libID - 1].cal[curMonth].weeks">
-                <td ng-repeat="day in week" ng-class="day.class">
-                    <div style="width:100%;height:100%;" popover="{{day.exc}}" popover-trigger="mouseenter" popover-placement="top">
-                        <div class="date">
-                            {{day.ts * 1000 | date:'d'}}
-                        </div>
-                        <div class="hours">
-                            {{day.hoursFrom}}
-                            <span ng-show="day.hoursFrom != day.hoursTo">
-                                <br>{{day.hoursTo}}
-                            </span>
+        <tr ng-repeat="week in cal.weeks">
+            <td ng-repeat="day in week" ng-class="day.css">
+
+                    <div class="date">
+                        {{day.ts * 1000 | date:'d'}}
+                    </div>
+                    <div class="hours">
+                        {{day.hoursFrom}}
+                        <div ng-if="day.hoursFrom != day.hoursTo">
+                            {{day.hoursTo}}
                         </div>
                     </div>
-                </td>
-            </tr>
+
+
+                <div class="fa fa-exclamation-circle exception-icon" ng-if="day.exc" popover="{{day.exc}}" popover-trigger="mouseenter" popover-append-to-body="true"></div>
+            </td>
+        </tr>
         </tbody>
-    </table>-->
+    </table>
 </div>

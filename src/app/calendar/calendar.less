@@ -1,0 +1,345 @@
+@import (reference) '../../../assets/vendor/roots-ualib/assets/less/_variables.less';
+
+// Components
+//
+// Styleguide 8.
+
+// Calendar
+//
+// The calendar is still very much in progress. Due to the nature of the content and how much space is needed to be readable,
+// there are still many caveats on where it can be used in context to Bootstrap column sizes. For now, is needs to be placed in a column no smaller than 9 (e.g., col-xs-9)
+//
+// Use the [embedded navbar](section-7.html#7dot2) for calendar navigation.
+//
+// Markup:
+//<div class="calendar table-responsive">
+//<div class="lead text-muted">This calendar is assuming the current day is Nov 11th</div>
+//<nav class="navbar navbar-default navbar-embedded">
+//<button type="button" class="btn btn-default navbar-btn navbar-left" disabled="disabled"><span class="fa fa-angle-left"></span></button>
+//<p class="navbar-text navbar-center">November</p>
+//<button type="button" class="btn btn-default navbar-btn navbar-right"><span class="fa fa-angle-right"></span></button>
+//</nav>
+//<table class="table table-bordered table-condensed">
+//<thead>
+//<tr>
+//<td>Sun</td>
+//<td>Mon</td>
+//<td>Tue</td>
+//<td>Wed</td>
+//<td>Thur</td>
+//<td>Fri</td>
+//<td>Sat</td>
+//</tr>
+//</thead>
+//<tbody>
+//<tr>
+//<td class="prev-month">
+//<div class="date">26</div>
+//<div class="hours">7:30am<br>2am</div>
+//</td>
+//<td class="prev-month">
+//<div class="date">27</div>
+//<div class="hours">7:30am<br>2am</div>
+//</td>
+//<td class="prev-month">
+//<div class="date">28</div>
+//<div class="hours">7:30am<br>2am</div>
+//</td>
+//<td class="prev-month exception">
+//<div class="date">29</div>
+//<div class="hours">9am<br>Midnight</div>
+//</td>
+//<td class="prev-month exception">
+//<div class="date">30</div>
+//<div class="hours">9am<br>Midnight</div>
+//</td>
+//<td class="prev-month exception">
+//<div class="date">31</div>
+//<div class="hours">9am<br>Midnight</div>
+//</td>
+//<td>
+//<div class="date">1</div>
+//<div class="hours">7:30am<br>2am</div>
+//</td>
+//</tr>
+//<tr>
+//<td>
+//<div class="date">2</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">3</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">4</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">5</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">6</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">7</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">8</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//</tr><tr>
+//<td>
+//<div class="date">9</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">10</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td class="today">
+//<div class="date">11</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">12</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">13</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">14</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td class="exception">
+//<div class="date">15</div>
+//<div class="hours">9am<br> 1pm</div>
+//</td>
+//</tr>
+//<tr>
+//<td>
+//<div class="date">16</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">17</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">18</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">19</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">20</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">21</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td class="exception">
+//<div class="date">22</div>
+//<div class="hours">10am<br> 9pm</div>
+//</td>
+//</tr>
+//<tr>
+//<td>
+//<div class="date">23</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">24</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td>
+//<div class="date">25</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td class="exception">
+//<div class="date">26</div>
+//<div class="hours">7:30am<br> 2am</div>
+//</td>
+//<td class="closed">
+//<div class="date">27</div>
+//<div class="hours">Closed</div>
+//</td>
+//<td class="closed">
+//<div class="date">28</div>
+//<div class="hours">Closed</div>
+//</td>
+//<td class="closed">
+//<div class="date">29</div>
+//<div class="hours">Closed</div>
+//</td>
+//</tr>
+//<tr>
+//<td class="exception">
+//<div class="date">30</div>
+//<div class="hours">12pm<br> Midnight</div>
+//</td>
+//<td class="next-month">
+//<div class="date">1</div>
+//<div class="hours">Open 24hrs</div>
+//</td>
+//<td class="next-month">
+//<div class="date">2</div>
+//<div class="hours">Open 24hrs</div>
+//</td>
+//<td class="next-month">
+//<div class="date">3</div>
+//<div class="hours">Open 24hrs</div>
+//</td>
+//<td class="next-month">
+//<div class="date">4</div>
+//<div class="hours">Open 24hrs</div>
+//</td>
+//<td class="next-month closed">
+//<div class="date">5</div>
+//<div class="hours">Closed</div>
+//</td>
+//<td class="next-month closed">
+//<div class="date">6</div>
+//<div class="hours">Closed</div>
+//</td>
+//</tr>
+//</tbody>
+//</table>
+//</div>
+//
+// Styleguide 8.1
+
+.calendar{
+  > table{
+
+    > thead > tr > td{
+      color: @state-info-text;
+      text-align: center;
+      background-color: @state-info-bg;
+      border: 1px solid darken(@body-bg, 20%);
+
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    > tbody > tr {
+
+      > td {
+        width: 0%+(100/7);
+        height: 0%+(100/6);
+        margin: 0;
+        position: relative;
+        text-align: center;
+
+        /*> div {
+          position: relative;
+          width:100%;
+          height: 100%;
+        }
+*/
+
+         .date {
+          font-size: .85em;
+          display: block;
+          float: right;
+          margin: 0;
+        }
+
+         .hours {
+          padding: 1em 0 1em 0.85em;
+          text-align: left;
+        }
+
+        .exception-icon {
+          position: absolute;
+          font-size: 1.2em;
+          bottom: 2px;
+          right: 2px;
+        }
+      }
+
+
+
+      > .today {
+        color: @state-info-text;
+        background-color: @state-info-bg;
+      }
+      > .exception {
+        color: @state-warning-text;
+        background-color: @state-warning-bg;
+      }
+
+      > .closed{
+        color: @state-danger-text;
+        background-color: @state-danger-bg;
+
+      }
+
+      > .not-current-month{
+        @day-muted-bg: darken(@body-bg, 2%);
+        @day-muted-text: darken(@day-muted-bg, 35%);
+        color: @day-muted-text;
+        background-color: @day-muted-bg;
+        &.exception{
+          color: average(@day-muted-bg, @state-warning-text);
+          background-color: average(@day-muted-bg, @state-warning-bg);
+        }
+        &.closed{
+          color: average(@day-muted-bg, @state-danger-text);
+          background-color: average(@day-muted-bg, @state-danger-bg);
+        }
+      }
+    }
+  }
+}
+
+//TODO: move to ui-components
+// Embedded Navbar
+//
+// Navbar designed to be embedded with components used as part of a web page's content.
+// See the [calendar component](section-8.html#8dot1) for an example.
+//
+// Markup:
+//<nav class="navbar navbar-default navbar-embedded">
+//<button type="button" class="btn btn-default navbar-btn navbar-left" disabled="disabled"><span class="fa fa-angle-left"></span></button>
+//<p class="navbar-text navbar-center">Some Centered Text</p>
+//<button type="button" class="btn btn-default navbar-btn navbar-right"><span class="fa fa-angle-right"></span></button>
+//</nav>
+//
+// Styleguide 7.2
+
+.navbar-embedded{
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 1.5em;
+  min-height: 1em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+
+  > .navbar-center{
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: .5em;
+    margin-bottom: .5em;
+  }
+
+  > .navbar-btn {
+    font-size: 0.85em;
+    margin: 5px;
+    &:focus,
+    &:hover {
+//      background-color: lighten(@body-bg, 6.5%);
+    }
+  }
+
+}
