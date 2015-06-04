@@ -42,6 +42,24 @@ module.exports = function(grunt){
                 }
             }
         },
+        copy: {
+            vendor: {
+                files: [
+                    {
+                        src: ['assets/vendor/lodash/dist/*.js'],
+                        dest: 'dist/vendor/lodash/',
+                        flatten: true,
+                        expand: true
+                    },
+                    {
+                        src: ['assets/vendor/angular-google-maps/dist/angular-google-maps.js'],
+                        dest: 'dist/vendor/angular-google-maps/',
+                        flatten: true,
+                        expand: true
+                    }
+                ]
+            }
+        },
       bump: {
         options: {
           files: ['package.json', 'bower.json'],
@@ -62,6 +80,6 @@ module.exports = function(grunt){
       }
     });
 
-    grunt.registerTask('default', ['html2js', 'concat', 'less']);
+    grunt.registerTask('default', ['html2js', 'concat', 'less', 'copy']);
     grunt.registerTask('build', ['default', 'uglify']);
 };
