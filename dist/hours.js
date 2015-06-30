@@ -68,7 +68,7 @@ angular.module('hours.calendar', [])
             lid = cal[0].library.lid;
             library = cal[0].library.name;
             thisMonth = cal[0].calendar[$scope.params.month];
-            defHours = cal[0].defaultHours[0];
+            defHours = cal[0].defaultHours;
 
             $scope.params.lid = lid;
             $scope.library = library;
