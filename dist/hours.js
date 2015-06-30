@@ -23,6 +23,7 @@ angular.module('hours.calendar', [])
         $scope.cal;
         $scope.month;
         $scope.library;
+        $scope.defHours;
         $scope.params = {
             lid: 1,
             month: 0,
@@ -60,16 +61,19 @@ angular.module('hours.calendar', [])
             var lid;
             var library;
             var thisMonth;
+            var defHours;
 
             cal = $filter('filterBy')(cal, ['library.name'], $scope.params.library);
 
             lid = cal[0].library.lid;
             library = cal[0].library.name;
             thisMonth = cal[0].calendar[$scope.params.month];
+            defHours = cal[0].defaultHours[0];
 
             $scope.params.lid = lid;
             $scope.library = library;
             $scope.cal = getCalStyles(thisMonth);
+            $scope.defHours = defHours;
         }
 
 
