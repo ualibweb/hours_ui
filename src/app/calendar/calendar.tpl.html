@@ -1,5 +1,10 @@
 <div class="calendar">
-    <h3>Typical Week Schedule</h3>
+    <h3>
+        Typical Week Schedule
+        <small ng-show="defHours[1].ts > 0">
+            until {{defHours[1].ts * 1000 | date:'MMM d, y'}}
+        </small>
+    </h3>
     <table class="table table-bordered table-condensed">
         <thead>
         <tr>
@@ -14,7 +19,7 @@
         </thead>
         <tbody>
         <tr>
-            <td ng-repeat="day in defHours.hours">
+            <td ng-repeat="day in defHours[0].hours">
                 <div class="hours">
                     {{day.hoursFrom}}
                     <span ng-show="day.hoursFrom != day.hoursTo">
@@ -26,7 +31,7 @@
         </tbody>
     </table>
 
-    <h3>Calendar with Exceptions</h3>
+    <h3>Calendar <small>Exceptions</small></h3>
     <nav class="navbar navbar-default navbar-embedded">
         <button type="button" class="btn btn-primary navbar-btn navbar-left" ng-class="{'disabled': params.month <= 0}" ng-disabled="params.month <= 0" ng-click="getPrevMonth()">
             <span class="fa fa-angle-left"></span>
