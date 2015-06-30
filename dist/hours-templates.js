@@ -3,6 +3,34 @@ angular.module('hours.templates', ['calendar/calendar.tpl.html', 'hours-location
 angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("calendar/calendar.tpl.html",
     "<div class=\"calendar\">\n" +
+    "    <h3>Typical Week Schedule</h3>\n" +
+    "    <table class=\"table table-bordered table-condensed\">\n" +
+    "        <thead>\n" +
+    "        <tr>\n" +
+    "            <td>Sun</td>\n" +
+    "            <td>Mon</td>\n" +
+    "            <td>Tue</td>\n" +
+    "            <td>Wed</td>\n" +
+    "            <td>Thur</td>\n" +
+    "            <td>Fri</td>\n" +
+    "            <td>Sat</td>\n" +
+    "        </tr>\n" +
+    "        </thead>\n" +
+    "        <tbody>\n" +
+    "        <tr>\n" +
+    "            <td ng-repeat=\"day in defHours.hours\">\n" +
+    "                <div class=\"hours\">\n" +
+    "                    {{day.hoursFrom}}\n" +
+    "                    <span ng-show=\"day.hoursFrom != day.hoursTo\">\n" +
+    "                        <br>{{day.hoursTo}}\n" +
+    "                    </span>\n" +
+    "                </div>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "        </tbody>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <h3>Calendar with Exceptions</h3>\n" +
     "    <nav class=\"navbar navbar-default navbar-embedded\">\n" +
     "        <button type=\"button\" class=\"btn btn-primary navbar-btn navbar-left\" ng-class=\"{'disabled': params.month <= 0}\" ng-disabled=\"params.month <= 0\" ng-click=\"getPrevMonth()\">\n" +
     "            <span class=\"fa fa-angle-left\"></span>\n" +

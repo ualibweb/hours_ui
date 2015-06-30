@@ -1,4 +1,32 @@
 <div class="calendar">
+    <h3>Typical Week Schedule</h3>
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <td>Sun</td>
+            <td>Mon</td>
+            <td>Tue</td>
+            <td>Wed</td>
+            <td>Thur</td>
+            <td>Fri</td>
+            <td>Sat</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td ng-repeat="day in defHours.hours">
+                <div class="hours">
+                    {{day.hoursFrom}}
+                    <span ng-show="day.hoursFrom != day.hoursTo">
+                        <br>{{day.hoursTo}}
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>Calendar with Exceptions</h3>
     <nav class="navbar navbar-default navbar-embedded">
         <button type="button" class="btn btn-primary navbar-btn navbar-left" ng-class="{'disabled': params.month <= 0}" ng-disabled="params.month <= 0" ng-click="getPrevMonth()">
             <span class="fa fa-angle-left"></span>
