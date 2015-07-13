@@ -155,56 +155,64 @@ angular.module('ualib.hours')
                 name: "Gorgas Library",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                phone: '(205) 348-6047'
             },
             {
                 id: 2,
                 name: "Bruno Business Library",
                 latitude: 33.211107,
                 longitude: -87.549255,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                phone: '(205) 348-1080'
             },
             {
                 id: 3,
                 name: "Rodgers Library",
                 latitude: 33.2134785,
                 longitude: -87.5427543,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                phone: '(205) 348-2100'
             },
             {
                 id: 4,
                 name: "Hoole Special Collections",
                 latitude: 33.210927,
                 longitude: -87.543182,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                phone: '(205) 348-0500'
             },
             {
                 id: 5,
                 name: "McLure Education Library",
                 latitude: 33.2104774,
                 longitude: -87.5490442,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png',
+                phone: '(205) 348-6055'
             },
             {
                 id: 6,
                 name: "Music Library",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                phone: '(205) 348-7309'
             },
             {
                 id: 7,
                 name: "Sanford Media Center",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                phone: '(205) 348-4651'
             },
             {
                 id: 8,
                 name: "Williams Collection",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                phone: '(205) 348-1489'
             }
         ];
         var libChangeListener;
@@ -266,8 +274,8 @@ angular.module('ualib.hours')
             link: function(scope, elm){
                 var href = scope.$eval(scope.hoursHref);
                 elm.bind('click', click);
-
-                if (href.library === $location.search().library){
+                console.log($location.search().library.indexOf(href.library));
+                if ($location.search().library.toLowerCase().indexOf(href.library) !== -1){
                     elm.parent().addClass('active');
                 }
 
