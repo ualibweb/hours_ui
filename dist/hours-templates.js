@@ -152,7 +152,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "        </div>\n" +
     "        <div class=\"col-md-3\">\n" +
     "\n" +
-    "            <div ui-scrollfix>\n" +
+    "            <div ui-scrollfix bound-by-parent>\n" +
     "                <ul class=\"nav nav-pills nav-stacked hours-locations-menu\">\n" +
     "                    <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
     "                        <ul class=\"nav nav-pills nav-stacked\">\n" +
