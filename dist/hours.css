@@ -107,6 +107,10 @@
 .library-hours-today .h3 {
   margin-top: 5px;
 }
+.hours-locations-container > div {
+  display: table-cell;
+  float: none;
+}
 
 .hours-list .fa-info-circle:hover {
   cursor: help;
