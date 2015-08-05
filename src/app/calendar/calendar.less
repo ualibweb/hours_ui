@@ -219,11 +219,11 @@
 
 .calendar{
 
-  &, > table {
-    min-height: 560px;
+  &, table {
+//    min-height: 560px;
   }
 
-  > table{
+   table{
     > thead > tr > td{
       color: @state-info-text;
       text-align: center;
@@ -242,6 +242,10 @@
         margin: 0;
         position: relative;
         text-align: center;
+        background-color: #f6f6f6;
+        /*&:hover {
+          background-color: #fff;
+        }*/
 
          .date {
           font-size: .85em;
@@ -253,6 +257,7 @@
          .hours {
           padding: 1em 0 1em 0.85em;
           text-align: left;
+           font-size: 0.9em;
         }
 
         .exception-icon {
@@ -281,7 +286,7 @@
       }
 
       > .not-current-month{
-        @day-muted-bg: darken(@body-bg, 2%);
+        @day-muted-bg: darken(@body-bg, 7%);
         @day-muted-text: darken(@day-muted-bg, 35%);
         color: @day-muted-text;
         background-color: @day-muted-bg;
