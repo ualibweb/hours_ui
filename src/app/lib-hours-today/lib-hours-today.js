@@ -19,8 +19,8 @@ angular.module('ualib.hours')
                                 libraries = libraries.concat(data.libraries[lib]['children']);
                             }
                         }
-                        var lib = $filter('filter')(libraries, {name: $scope.library});
-                        $scope.today = setStatus(lib[0]);
+                        var library = $filter('filter')(libraries, {name: $scope.library});
+                        $scope.today = setStatus(library[0]);
                         $element.addClass('loaded');
 
                     },

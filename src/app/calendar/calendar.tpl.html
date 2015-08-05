@@ -1,59 +1,63 @@
 <div class="calendar">
-    <h3>
-        Typical Week Schedule
-        <small ng-show="defHours[1].ts > 0">
-            until {{defHours[1].ts * 1000 | date:'MMM d, y'}}
-        </small>
-    </h3>
-    <table class="table table-bordered table-condensed">
-        <thead>
-        <tr>
-            <td>Sun</td>
-            <td>Mon</td>
-            <td>Tue</td>
-            <td>Wed</td>
-            <td>Thur</td>
-            <td>Fri</td>
-            <td>Sat</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td ng-repeat="day in defHours[0].hours">
-                <div class="hours">
-                    {{day.hoursFrom}}
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default" ng-model="calView" btn-radio="">Typical Week Schedule</label>
+            <label class="btn btn-default" ng-model="calView" btn-radio="1">Calendar &amp; Exceptions</label>
+        </div>
+    </div>
+    <div ng-show="!calView">
+        <div class="text-info" ng-show="defHours[1].ts > 0">
+            <span class="fa fw fa-info-circle"></span> Until {{defHours[1].ts * 1000 | date:'MMM d, y'}}
+        </div>
+        <table class="table table-bordered table-condensed">
+            <thead>
+            <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thur</td>
+                <td>Fri</td>
+                <td>Sat</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td ng-repeat="day in defHours[0].hours">
+                    <div class="hours">
+                        {{day.hoursFrom}}
                     <span ng-show="day.hoursFrom != day.hoursTo">
                         <br>{{day.hoursTo}}
                     </span>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <h3>Calendar <small>Exceptions</small></h3>
-    <nav class="navbar navbar-default navbar-embedded">
-        <button type="button" class="btn btn-primary navbar-btn navbar-left" ng-class="{'disabled': params.month <= 0}" ng-disabled="params.month <= 0" ng-click="getPrevMonth()">
-            <span class="fa fa-angle-left"></span>
-        </button>
-        <h2 class="navbar-text navbar-center">{{cal.month}}</h2>
-        <button type="button" class="btn btn-primary navbar-btn navbar-right" ng-class="{'disabled': params.month >= 5}" ng-disabled="params.month >= 5" ng-click="getNextMonth()"><span class="fa fa-angle-right"></span></button>
-    </nav>
-    <table class="table table-bordered table-condensed">
-        <thead>
-        <tr>
-            <td>Sun</td>
-            <td>Mon</td>
-            <td>Tue</td>
-            <td>Wed</td>
-            <td>Thur</td>
-            <td>Fri</td>
-            <td>Sat</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="week in cal.weeks">
-            <td ng-repeat="day in week" ng-class="day.css">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="calView">
+        <nav class="navbar navbar-default navbar-embedded">
+            <button type="button" class="btn btn-primary navbar-btn navbar-left" ng-class="{'disabled': params.month <= 0}" ng-disabled="params.month <= 0" ng-click="getPrevMonth()">
+                <span class="fa fa-angle-left"></span>
+            </button>
+            <h2 class="navbar-text navbar-center">{{cal.month}}</h2>
+            <button type="button" class="btn btn-primary navbar-btn navbar-right" ng-class="{'disabled': params.month >= 5}" ng-disabled="params.month >= 5" ng-click="getNextMonth()"><span class="fa fa-angle-right"></span></button>
+        </nav>
+        <table class="table table-bordered table-condensed table-hover">
+            <thead>
+            <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thur</td>
+                <td>Fri</td>
+                <td>Sat</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="week in cal.weeks">
+                <td ng-repeat="day in week" ng-class="day.css">
 
                     <div class="date">
                         {{day.ts * 1000 | date:'d'}}
@@ -66,9 +70,13 @@
                     </div>
 
 
-                <div class="fa fa-exclamation-circle exception-icon" ng-if="day.exc" popover="{{day.exc}}" popover-trigger="mouseenter" popover-append-to-body="true"></div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                    <div class="fa fa-exclamation-circle exception-icon" ng-if="day.exc" popover="{{day.exc}}" popover-trigger="mouseenter" popover-append-to-body="true"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 </div>
