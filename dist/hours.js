@@ -18,7 +18,7 @@ angular.module('hours', ['ualib.hours']);
 
 angular.module('hours.calendar', [])
 
-    .controller('CalendarCtrl', ['$scope', '$location', '$filter', 'hoursFactory', function CalendarCtrl($scope, $location, $filter, hoursFactory){
+    .controller('CalendarCtrl', ['$scope', '$location', '$filter', 'hoursFactory', '$rootScope', function CalendarCtrl($scope, $location, $filter, hoursFactory, $rootScope){
         var calData;
         $scope.cal;
         $scope.month;
@@ -74,6 +74,7 @@ angular.module('hours.calendar', [])
             $scope.library = library;
             $scope.cal = getCalStyles(thisMonth);
             $scope.defHours = defHours;
+            $rootScope.$broadcast('hoursLoaded');
         }
 
 
@@ -284,21 +285,12 @@ angular.module('ualib.hours')
 
         uiGmapGoogleMapApi.then(function(maps) {
             updateMap();
-            console.log(maps);
-            libChangeListener = $scope.$watch(function(){
-                return $scope.params.lid;
-            }, function(newVal, oldVal){
-                if (newVal != oldVal){
-                    updateMap();
-                }
-            }, true);
+            //console.log(maps);
+            libChangeListener = $scope.$on('hoursLoaded', function(){
+                updateMap();
+            });
 
         });
-
-
-        $scope.updateBounds = function(maps, ev){
-            console.log(maps.getBounds());
-        };
 
         $scope.getDirections = function(){
             var link = "https://www.google.com/maps/dir/" + $scope.directionsFrom + "/" + $scope.center.latitude + "," + $scope.center.longitude;

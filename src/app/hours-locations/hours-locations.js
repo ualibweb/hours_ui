@@ -153,21 +153,12 @@ angular.module('ualib.hours')
 
         uiGmapGoogleMapApi.then(function(maps) {
             updateMap();
-            console.log(maps);
-            libChangeListener = $scope.$watch(function(){
-                return $scope.params.lid;
-            }, function(newVal, oldVal){
-                if (newVal != oldVal){
-                    updateMap();
-                }
-            }, true);
+            //console.log(maps);
+            libChangeListener = $scope.$on('hoursLoaded', function(){
+                updateMap();
+            });
 
         });
-
-
-        $scope.updateBounds = function(maps, ev){
-            console.log(maps.getBounds());
-        };
 
         $scope.getDirections = function(){
             var link = "https://www.google.com/maps/dir/" + $scope.directionsFrom + "/" + $scope.center.latitude + "," + $scope.center.longitude;

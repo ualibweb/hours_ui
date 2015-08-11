@@ -1,6 +1,6 @@
 angular.module('hours.calendar', [])
 
-    .controller('CalendarCtrl', ['$scope', '$location', '$filter', 'hoursFactory', function CalendarCtrl($scope, $location, $filter, hoursFactory){
+    .controller('CalendarCtrl', ['$scope', '$location', '$filter', 'hoursFactory', '$rootScope', function CalendarCtrl($scope, $location, $filter, hoursFactory, $rootScope){
         var calData;
         $scope.cal;
         $scope.month;
@@ -56,6 +56,7 @@ angular.module('hours.calendar', [])
             $scope.library = library;
             $scope.cal = getCalStyles(thisMonth);
             $scope.defHours = defHours;
+            $rootScope.$broadcast('hoursLoaded');
         }
 
 
