@@ -284,7 +284,7 @@ angular.module('ualib.hours')
         var libChangeListener;
 
         uiGmapGoogleMapApi.then(function(maps) {
-            updateMap();
+
             //console.log(maps);
             libChangeListener = $scope.$on('hoursLoaded', function(){
                 updateMap();

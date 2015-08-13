@@ -1,13 +1,28 @@
 <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->
 <div class="jumbotron bg-transparent">
-    <div class="container">
-        <h1>Hours &amp; Locations</h1>
-        <h2>{{library}}</h2>
-    </div>
+    <h1>Hours &amp; Locations</h1>
+    <h2>{{library}}</h2>
 </div>
 <div class="container">
-    <div class="row hours-locations-container">
-        <div class="col-md-9">
+    <div class="row">
+        <div class="col-md-3 col-md-push-9">
+            <div>
+                <ul class="nav nav-pills nav-stacked hours-locations-menu">
+                    <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
+                            <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
+                            <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
+                    <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
+                    <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
+                    <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 col-md-pull-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="hours-calendar"></div>
@@ -57,25 +72,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <div class="col-md-3 hidden-xs">
-
-            <div ui-scrollfix bound-by-parent>
-                <ul class="nav nav-pills nav-stacked hours-locations-menu">
-                    <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
-                            <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
-                            <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
-                    <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
-                    <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
-                    <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
-                </ul>
             </div>
 
         </div>
