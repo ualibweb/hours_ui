@@ -1,17 +1,13 @@
 angular.module('hours.list', [])
 
     .controller('ListCtrl', ['$scope', '$element', '$animate', 'hoursFactory', function ListCtrl($scope, $element, $animate, hoursFactory){
-        var spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
-        var elm = $element.find('h2');
-        $scope.hoursList = {};
 
-        $animate.enter(spinner, elm, angular.element(elm[0].lastChild));
+        $scope.hoursList = {};
 
         hoursFactory.get({view: 'today'},
             function(data){
                 var list = setStatus(data.libraries);
                 $scope.hoursList = list;
-                $animate.leave(spinner);
             },
             function(msg){
                 console.log(msg);

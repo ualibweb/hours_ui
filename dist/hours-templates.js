@@ -178,13 +178,13 @@ angular.module("lib-hours-today/lib-hours-today.tpl.html", []).run(["$templateCa
     "        <span class=\"label\" ng-class=\"today.status.css\">{{today.status.text}}</span>\n" +
     "    </h2>\n" +
     "    <div class=\"h3\">{{today.hours}}</div>\n" +
+    "    <a ng-href=\"/#hours?library={{today.name}}\" title=\"All hours {{today.name}}\">All hours</a>\n" +
     "</div>\n" +
     "");
 }]);
 
 angular.module("list/list.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("list/list.tpl.html",
-    "<h2>Hours <small>today</small></h2>\n" +
     "<div class=\"responsive-table\">\n" +
     "  <table class=\"table table-hover\">\n" +
     "    <tbody ng-repeat=\"lib in hoursList track by $index\">\n" +
