@@ -178,7 +178,7 @@ angular.module("lib-hours-today/lib-hours-today.tpl.html", []).run(["$templateCa
     "        <span class=\"label\" ng-class=\"today.status.css\">{{today.status.text}}</span>\n" +
     "    </h2>\n" +
     "    <div class=\"h3\">{{today.hours}}</div>\n" +
-    "    <a ng-href=\"/#hours?library={{today.name}}\" title=\"All hours {{today.name}}\">All hours</a>\n" +
+    "    <a class=\"btn btn-default btn-xs\" ng-href=\"/#hours?library={{today.name}}\" title=\"All hours {{today.name}}\">All hours <span class=\"fa fa-chevron-right\"></span></a>\n" +
     "</div>\n" +
     "");
 }]);
