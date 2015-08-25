@@ -8,7 +8,7 @@ angular.module('ualib.hours')
                 library: '@'
             },
             templateUrl: 'lib-hours-today/lib-hours-today.tpl.html',
-            controller: function($scope, $element){
+            controller: ['$scope', '$element', function($scope, $element){
                 var library = angular.isDefined($scope.library) ? $scope.library : 'gorgas';
                 hoursFactory.get({view: 'today'},
                     function(data){
@@ -51,6 +51,6 @@ angular.module('ualib.hours')
                     return hours;
                 }
 
-            }
+            }]
         }
     }])

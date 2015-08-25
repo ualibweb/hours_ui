@@ -12,7 +12,6 @@
   margin: 0;
   position: relative;
   text-align: center;
-  background-color: #f9f9f9;
 }
 .calendar table > tbody > tr > td:hover {
   background-color: #fff;
@@ -99,14 +98,6 @@
 .library-hours-today.loaded {
   height: auto;
   opacity: 1;
-}
-.library-hours-today > h2,
-.library-hours-today .h2 {
-  margin-top: 0;
-}
-.library-hours-today > h3,
-.library-hours-today .h3 {
-  margin-top: 5px;
 }
 .hours-locations-container > div {
   display: table-cell;

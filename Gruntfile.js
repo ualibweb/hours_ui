@@ -29,9 +29,17 @@ module.exports = function(grunt){
             }
         },
         less: {
-            dist: {
+            dev: {
                 files: {
                     'dist/hours.css': ['src/**/*.less', 'src/**/*.css']
+                }
+            },
+            build: {
+                files: {
+                    'dist/hours.min.css': ['src/**/*.less', 'src/**/*.css']
+                },
+                options: {
+                    compress: true
                 }
             }
         },
@@ -80,6 +88,6 @@ module.exports = function(grunt){
         }
     });
 
-    grunt.registerTask('default', ['html2js', 'concat', 'less', 'copy']);
-    grunt.registerTask('build', ['default', 'uglify']);
+    grunt.registerTask('default', ['html2js', 'concat', 'less:dev', 'copy']);
+    grunt.registerTask('build', ['default', 'less:build', 'uglify']);
 };

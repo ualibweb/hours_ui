@@ -172,19 +172,25 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
 
 angular.module("lib-hours-today/lib-hours-today.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("lib-hours-today/lib-hours-today.tpl.html",
-    "<div class=\"library-hours-today\">\n" +
-    "    <h2>\n" +
-    "        <span class=\"fa fa-clock-o\"></span> Today\n" +
-    "        <span class=\"label\" ng-class=\"today.status.css\">{{today.status.text}}</span>\n" +
-    "    </h2>\n" +
-    "    <div class=\"h3\">{{today.hours}}</div>\n" +
-    "    <a class=\"btn btn-default btn-xs\" ng-href=\"/#hours?library={{today.name}}\" title=\"All hours {{today.name}}\">See all hours <span class=\"fa fa-fw fa-chevron-right\"></span></a>\n" +
-    "</div>\n" +
-    "");
+    "<div class=\"library-hours-today\" ng-cloak>\n" +
+    "    <div class=\"media\">\n" +
+    "        <div class=\"media-left\">\n" +
+    "            <div class=\"media-object fa fa-2x fa-clock-o\">\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"media-body\">\n" +
+    "            <h3 class=\"media-heading\">Today</h3>\n" +
+    "            <h4 class=\"media-heading\">{{today.hours}}</h4>\n" +
+    "            <span class=\"label\" ng-class=\"today.status.css\">{{today.status.text}}</span>\n" +
+    "            <a class=\"btn btn-link btn-xs\" ng-href=\"/#hours?library={{today.name}}\" title=\"All hours {{today.name}}\">See all hours <span class=\"fa fa-fw fa-chevron-right\"></span></a>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);
 
 angular.module("list/list.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("list/list.tpl.html",
+    "<h2>Hours <small>today</small></h2>\n" +
     "<div class=\"responsive-table\">\n" +
     "  <table class=\"table table-hover\">\n" +
     "    <tbody ng-repeat=\"lib in hoursList track by $index\">\n" +

@@ -28,7 +28,7 @@ angular.module('ualib.hours')
                 name: "Gorgas Library",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
                 contact: {
                     phone: [{
                             number: '(205) 348-6047',
@@ -40,38 +40,30 @@ angular.module('ualib.hours')
                         }],
                     email: 'gorgasinfo@ua.edu'
                 },
-                link: '/libraries/gorgas/'
+                link: '/libraries-and-collections/gorgas-library/'
             },
             {
                 id: 2,
                 name: "Bruno Business Library",
                 latitude: 33.211107,
                 longitude: -87.549255,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
                 contact: {
-                    phone: [{
-                        number: '(205) 348-1090',
-                        dept:   'Reference'
-                    },
+                    phone: [
                         {
-                            number: '(205) 348-1086',
-                            dept: 'Circulation'
-                        },
-                        {
-                            number: '(205) 348-1085',
-                            dept: 'Reserve Desk'
+                            number: '(205) 348-1080'
                         }],
 
                     email: 'brunolibrary@culverhouse.ua.edu'
                 },
-                link: '/libraries/bruno/'
+                link: '/libraries-and-collections/bruno/'
             },
             {
                 id: 3,
                 name: "Rodgers Library",
                 latitude: 33.2134785,
                 longitude: -87.5427543,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
                 contact: {
                     phone: [{
                         number: '(205) 348-2100',
@@ -79,55 +71,55 @@ angular.module('ualib.hours')
                     }],
                     email: 'scenglib@bama.ua.edu'
                 },
-                link: '/libraries/rodgers/'
+                link: '/libraries-and-collections/rodgers-science-and-engineering-library/'
             },
             {
                 id: 4,
                 name: "Hoole Special Collections",
                 latitude: 33.210927,
                 longitude: -87.543182,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
                 contact: {
                     phone: [{
                         number: '(205) 348-0500',
                         dept: 'Front Desk'
                     }],
-                    email: 'archives@ua.edu',
+                    email: 'scenglib@bama.ua.edu',
                     alert: [{
                         type: 'info',
                         msg: 'For reference questions'
                     }]
                 },
-                link: '/libraries/hoole/'
+                link: '/libraries-and-collections/hoole-library/'
             },
             {
                 id: 5,
                 name: "McLure Education Library",
                 latitude: 33.2104774,
                 longitude: -87.5490442,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/pink-dot.png',
                 contact: {
                     phone: [{
                         number: '(205) 348-6055',
                         dept:   'Reference & Circulation'
                     }]
                 },
-                link: '/libraries/mclure/'
+                link: '/libraries-and-collections/mclure-education-library/'
             },
             {
                 id: 6,
                 name: "Music Library",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-                link: '/libraries/music/'
+                icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                link: '/libraries-and-collections/music-library/'
             },
             {
                 id: 7,
                 name: "Sanford Media Center",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
                 contact: {
                     phone: [{
                         number: '(205) 348-4651'
@@ -140,7 +132,7 @@ angular.module('ualib.hours')
                 name: "Williams Collection",
                 latitude: 33.211803,
                 longitude: -87.546032,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
                 contact: {
                     phone: [{
                         number: '(205) 358-1489'
@@ -151,14 +143,12 @@ angular.module('ualib.hours')
         ];
         var libChangeListener;
 
-        uiGmapGoogleMapApi.then(function(maps) {
-
-            //console.log(maps);
-            libChangeListener = $scope.$on('hoursLoaded', function(){
+        libChangeListener = $scope.$on('hoursLoaded', function(){
+            uiGmapGoogleMapApi.then(function(maps) {
                 updateMap();
             });
-
         });
+
 
         $scope.getDirections = function(){
             var link = "https://www.google.com/maps/dir/" + $scope.directionsFrom + "/" + $scope.center.latitude + "," + $scope.center.longitude;
