@@ -99,6 +99,9 @@
   height: auto;
   opacity: 1;
 }
+.library-hours-today .label {
+  font-size: .9em;
+}
 .hours-locations-container > div {
   display: table-cell;
   float: none;

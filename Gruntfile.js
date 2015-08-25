@@ -89,5 +89,5 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('default', ['html2js', 'concat', 'less:dev', 'copy']);
-    grunt.registerTask('build', ['default', 'less:build', 'uglify']);
+    grunt.registerTask('live-build', ['default', 'less:build', 'uglify']);
 };
