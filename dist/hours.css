@@ -12,9 +12,9 @@
   margin: 0;
   position: relative;
   text-align: center;
-}
-.calendar table > tbody > tr > td:hover {
-  background-color: #fff;
+  /*&:hover {
+          background-color: #fff;
+        }*/
 }
 .calendar table > tbody > tr > td .date {
   font-size: .85em;
@@ -39,23 +39,19 @@
 }
 .calendar table > tbody > tr > .exception {
   color: #8a6d3b;
-  background-color: #fcf8e3;
 }
 .calendar table > tbody > tr > .closed {
   color: #a94442;
-  background-color: #f2dede;
 }
 .calendar table > tbody > tr > .not-current-month {
-  color: #949494;
-  background-color: #ededed;
+  color: #9e9e9e;
+  background-color: #f7f7f7;
 }
 .calendar table > tbody > tr > .not-current-month.exception {
-  color: #bcad94;
-  background-color: #f5f3e8;
+  color: #c1b299;
 }
 .calendar table > tbody > tr > .not-current-month.closed {
-  color: #cb9998;
-  background-color: #f0e6e6;
+  color: #d09e9d;
 }
 .navbar-embedded {
   margin-bottom: 0;
@@ -87,7 +83,7 @@
 
 .library-hours-today {
   position: relative;
-  min-height: 122px;
+  min-height: 81px;
   opacity: 0;
   margin-bottom: 15px;
   -moz-transition: all 0.2s;
@@ -100,7 +96,10 @@
   opacity: 1;
 }
 .library-hours-today .label {
-  font-size: .9em;
+  font-size: 1em;
+}
+.library-hours-today .media-body {
+  width: auto;
 }
 .hours-locations-container > div {
   display: table-cell;

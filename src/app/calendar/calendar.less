@@ -220,7 +220,7 @@
 .calendar{
 
   &, table {
-//    min-height: 560px;
+//    min-height: 569px;
   }
 
    table{
@@ -242,9 +242,9 @@
         margin: 0;
         position: relative;
         text-align: center;
-        &:hover {
+        /*&:hover {
           background-color: #fff;
-        }
+        }*/
 
          .date {
           font-size: .85em;
@@ -275,27 +275,27 @@
       }
       > .exception {
         color: @state-warning-text;
-        background-color: @state-warning-bg;
+//        background-color: @state-warning-bg;
       }
 
       > .closed{
         color: @state-danger-text;
-        background-color: @state-danger-bg;
+//        background-color: @state-danger-bg;
 
       }
 
       > .not-current-month{
-        @day-muted-bg: darken(@body-bg, 7%);
+        @day-muted-bg: darken(@body-bg, 3%);
         @day-muted-text: darken(@day-muted-bg, 35%);
         color: @day-muted-text;
         background-color: @day-muted-bg;
         &.exception{
           color: average(@day-muted-bg, @state-warning-text);
-          background-color: average(@day-muted-bg, @state-warning-bg);
+//          background-color: average(@day-muted-bg, @state-warning-bg);
         }
         &.closed{
           color: average(@day-muted-bg, @state-danger-text);
-          background-color: average(@day-muted-bg, @state-danger-bg);
+//          background-color: average(@day-muted-bg, @state-danger-bg);
         }
       }
     }
