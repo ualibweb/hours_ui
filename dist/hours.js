@@ -176,7 +176,7 @@ angular.module('ualib.hours')
                         }],
                     email: 'gorgasinfo@ua.edu'
                 },
-                link: '/libraries-and-collections/gorgas-library/'
+                link: '/libraries/gorgas/'
             },
             {
                 id: 2,
@@ -192,7 +192,7 @@ angular.module('ualib.hours')
 
                     email: 'brunolibrary@culverhouse.ua.edu'
                 },
-                link: '/libraries-and-collections/bruno/'
+                link: '/libraries/bruno/'
             },
             {
                 id: 3,
@@ -207,7 +207,7 @@ angular.module('ualib.hours')
                     }],
                     email: 'scenglib@bama.ua.edu'
                 },
-                link: '/libraries-and-collections/rodgers-science-and-engineering-library/'
+                link: '/libraries/rodgers/'
             },
             {
                 id: 4,
@@ -226,7 +226,7 @@ angular.module('ualib.hours')
                         msg: 'For reference questions'
                     }]
                 },
-                link: '/libraries-and-collections/hoole-library/'
+                link: '/libraries/hoole/'
             },
             {
                 id: 5,
@@ -240,7 +240,7 @@ angular.module('ualib.hours')
                         dept:   'Reference & Circulation'
                     }]
                 },
-                link: '/libraries-and-collections/mclure-education-library/'
+                link: '/libraries/mclure/'
             },
             {
                 id: 6,
@@ -248,7 +248,7 @@ angular.module('ualib.hours')
                 latitude: 33.211803,
                 longitude: -87.546032,
                 icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-                link: '/libraries-and-collections/music-library/'
+                link: '/libraries/music/'
             },
             {
                 id: 7,
@@ -261,7 +261,7 @@ angular.module('ualib.hours')
                         number: '(205) 348-4651'
                     }]
                 },
-                link: '/services/sanford-media-center/'
+                link: '/using-the-library/sanford-media-center/'
             },
             {
                 id: 8,
