@@ -96,9 +96,9 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "        <button class=\"btn btn-default btn-lg dropdown-toggle\" id=\"locationMenu\"  type=\"button\">\n" +
     "            {{library}}\n" +
     "        </button>\n" +
-    "        <ul class=\"dropdown-menu nav nav-pills nav-stacked hours-locations-menu\" role=\"menu\" aria-labelledby=\"locationMenu\">\n" +
+    "        <ul class=\"dropdown-menu nav nav-stacked hours-locations-menu\" role=\"menu\" aria-labelledby=\"locationMenu\">\n" +
     "            <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
-    "                <ul class=\"nav nav-pills nav-stacked\">\n" +
+    "                <ul class=\"nav nav-stacked\">\n" +
     "                    <li><a href=\"#\" hours-href=\"{library: 'music', month: 0}\">Music Library</a></li>\n" +
     "                    <li><a href=\"#\" hours-href=\"{library: 'media', month: 0}\">Sanford Media Center</a></li>\n" +
     "                    <li><a href=\"#\" hours-href=\"{library: 'williams', month: 0}\">Williams Americana Collection</a></li>\n" +
