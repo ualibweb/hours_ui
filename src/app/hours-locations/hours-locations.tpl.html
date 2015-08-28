@@ -1,12 +1,30 @@
 <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->
 <div class="jumbotron bg-transparent">
     <h1>Hours &amp; Locations</h1>
-    <h2>{{library}}</h2>
+    <h2 class="hidden-xs hidden-sm">{{library}}</h2>
+    <div class="dropdown multipage-menu visible-xs visible-sm">
+        <button class="btn btn-default btn-lg dropdown-toggle" id="locationMenu"  type="button">
+            {{library}}
+        </button>
+        <ul class="dropdown-menu nav nav-pills nav-stacked hours-locations-menu" role="menu" aria-labelledby="locationMenu">
+            <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
+                    <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
+                    <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
+                </ul>
+            </li>
+            <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
+            <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
+            <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
+            <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
+        </ul>
+    </div>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-md-push-9">
-            <div>
+            <div class="hidden-xs hidden-sm">
                 <ul class="nav nav-pills nav-stacked hours-locations-menu">
                     <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
                         <ul class="nav nav-pills nav-stacked">

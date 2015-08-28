@@ -5,7 +5,7 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "<div class=\"calendar\">\n" +
     "    <div class=\"form-group\">\n" +
     "        <div class=\"btn-group\">\n" +
-    "            <label class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"\">Typical Week Schedule</label>\n" +
+    "            <label class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"\">Typical Schedule</label>\n" +
     "            <label class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"1\">Calendar &amp; Exceptions</label>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -91,12 +91,30 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "<!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->\n" +
     "<div class=\"jumbotron bg-transparent\">\n" +
     "    <h1>Hours &amp; Locations</h1>\n" +
-    "    <h2>{{library}}</h2>\n" +
+    "    <h2 class=\"hidden-xs hidden-sm\">{{library}}</h2>\n" +
+    "    <div class=\"dropdown multipage-menu visible-xs visible-sm\">\n" +
+    "        <button class=\"btn btn-default btn-lg dropdown-toggle\" id=\"locationMenu\"  type=\"button\">\n" +
+    "            {{library}}\n" +
+    "        </button>\n" +
+    "        <ul class=\"dropdown-menu nav nav-pills nav-stacked hours-locations-menu\" role=\"menu\" aria-labelledby=\"locationMenu\">\n" +
+    "            <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
+    "                <ul class=\"nav nav-pills nav-stacked\">\n" +
+    "                    <li><a href=\"#\" hours-href=\"{library: 'music', month: 0}\">Music Library</a></li>\n" +
+    "                    <li><a href=\"#\" hours-href=\"{library: 'media', month: 0}\">Sanford Media Center</a></li>\n" +
+    "                    <li><a href=\"#\" hours-href=\"{library: 'williams', month: 0}\">Williams Americana Collection</a></li>\n" +
+    "                </ul>\n" +
+    "            </li>\n" +
+    "            <li><a href=\"#\" hours-href=\"{library: 'rodgers', month: 0}\">Rodgers</a></li>\n" +
+    "            <li><a href=\"#\" hours-href=\"{library: 'mclure', month: 0}\">McLure</a></li>\n" +
+    "            <li><a href=\"#\" hours-href=\"{library: 'hoole', month: 0}\">Hoole</a></li>\n" +
+    "            <li><a href=\"#\" hours-href=\"{library: 'bruno', month: 0}\">Bruno</a></li>\n" +
+    "        </ul>\n" +
+    "    </div>\n" +
     "</div>\n" +
     "<div class=\"container\">\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-md-3 col-md-push-9\">\n" +
-    "            <div>\n" +
+    "            <div class=\"hidden-xs hidden-sm\">\n" +
     "                <ul class=\"nav nav-pills nav-stacked hours-locations-menu\">\n" +
     "                    <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
     "                        <ul class=\"nav nav-pills nav-stacked\">\n" +
