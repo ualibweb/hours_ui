@@ -1,11 +1,12 @@
 {
   "name": "hours_ui",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "license": "ECL-2.0",
   "private": true,
   "main": [
-    "dist/hours.min.js",
-    "dist/hours.min.css"
+    "dist/hours-templates.js",
+    "dist/hours.js",
+    "dist/hours.css"
   ],
   "ignore": [
     "**/.*",
