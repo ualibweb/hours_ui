@@ -11,13 +11,13 @@ module.exports = function(grunt){
                     process: true
                 },
                 src: 'src/app/**/*.tpl.html',
-                dest: 'dist/hours-templates.js',
+                dest: 'tmp/templates.js',
                 module: 'hours.templates'
             }
         },
         concat: {
-            dist: {
-                src: ['src/app/**/*.js'],
+            app: {
+                src: ['tmp/templates.js', 'src/app/**/*.js'],
                 dest: 'dist/hours.js'
             },
             index: {
@@ -46,8 +46,20 @@ module.exports = function(grunt){
         uglify: {
             dist: {
                 files: {
-                    'dist/hours.min.js': ['dist/hours-templates.js', 'dist/hours.js']
+                    'dist/hours.min.js': ['dist/hours.js']
                 }
+            }
+        },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            dist: {
+                files: [
+                    {
+                        'dist/hours.js': ['dist/hours.js']
+                    }
+                ]
             }
         },
         copy: {
@@ -67,6 +79,9 @@ module.exports = function(grunt){
                     }
                 ]
             }
+        },
+        clean: {
+            app: ['tmp/']
         },
         bump: {
             options: {
@@ -88,6 +103,6 @@ module.exports = function(grunt){
         }
     });
 
-    grunt.registerTask('default', ['html2js', 'concat', 'less:dev', 'copy']);
-    grunt.registerTask('live-build', ['default', 'less:build', 'uglify']);
+    grunt.registerTask('default', ['html2js', 'concat', 'less:dev', 'copy', 'clean']);
+    grunt.registerTask('live-build', ['default', 'less:build', 'ngAnnotate', 'uglify']);
 };
