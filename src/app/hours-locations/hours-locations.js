@@ -84,7 +84,7 @@ angular.module('ualib.hours')
                         number: '(205) 348-0500',
                         dept: 'Front Desk'
                     }],
-                    email: 'scenglib@bama.ua.edu',
+                    email: 'archives@bama.ua.edu',
                     alert: [{
                         type: 'info',
                         msg: 'For reference questions'
