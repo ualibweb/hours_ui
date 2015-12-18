@@ -1,24 +1,50 @@
 <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->
-<div class="jumbotron bg-transparent">
-    <h1>Hours &amp; Locations</h1>
-    <h2 class="hidden-xs hidden-sm">{{library}}</h2>
-    <div class="dropdown multipage-menu visible-xs visible-sm">
-        <button class="btn btn-default btn-lg dropdown-toggle" id="locationMenu"  type="button">
-            {{library}}
-        </button>
-        <ul class="dropdown-menu nav nav-stacked hours-locations-menu" role="menu" aria-labelledby="locationMenu">
-            <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
-                <ul class="nav nav-stacked">
-                    <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
-                    <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
-                    <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
-                </ul>
-            </li>
-            <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
-            <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
-            <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
-            <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
-        </ul>
+<div class="jumbotron-header">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h1>Hours & Locations</h1>
+                    <h2 class="hidden-xs hidden-sm">{{library}}</h2>
+                    <div class="dropdown multipage-menu visible-xs visible-sm">
+                        <button class="btn btn-default btn-lg dropdown-toggle" id="locationMenu"  type="button">
+                            {{library}}
+                        </button>
+                        <ul class="dropdown-menu nav nav-stacked hours-locations-menu" role="menu" aria-labelledby="locationMenu">
+                            <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
+                                    <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
+                                    <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
+                            <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
+                            <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
+                            <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
+                        </ul>
+                    </div>
+                    <ul class="list-unstyled fa-ul" ng-if="contact">
+                        <li ng-if="contact.email"><span class="fa fa-li fa-envelope"></span> <a ng-href="mailto:{{contact.email}}">{{contact.email}}</a></li>
+                        <li ng-if="contact.phone">
+                            <span class="fa fa-li fa-phone"></span>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="phone in contact.phone">
+                                    <span ng-if="phone.dept">{{phone.dept}}: </span>
+                                    <a ng-href="tel:+1-205-{{phone.number}}" title="{{library}} phone number">{{phone.number}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div class="well">
+                        <p class="lead">What can {{library}} do for you?</p>
+                        <a ng-href="{{moreLink}}" class="btn btn-primary">Learn more <span class="fa fa-fw fa-info-circle"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="container">
@@ -41,6 +67,7 @@
             </div>
         </div>
         <div class="col-md-9 col-md-pull-3">
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="hours-calendar"></div>
@@ -49,7 +76,7 @@
 
 
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <ui-gmap-google-map center='center' zoom='zoom' id="map-canvas" options="{disableDefaultUI: true}">
@@ -67,26 +94,6 @@
                         </span>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Contact</div>
-                        <div class="panel-body">
-                            <ul class="list-unstyled fa-ul" ng-if="contact">
-                                <li ng-if="contact.email"><span class="fa fa-li fa-envelope"></span> <a ng-href="mailto:{{contact.email}}">{{contact.email}}</a></li>
-                                <li ng-if="contact.phone">
-                                    <span class="fa fa-li fa-phone"></span>
-                                    <ul class="list-unstyled">
-                                        <li ng-repeat="phone in contact.phone">
-                                            <strong ng-if="phone.dept">{{phone.dept}}: </strong>
-                                            {{phone.number}}
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <a ng-href="{{moreLink}}" class="btn btn-block btn-default">More about {{library}}</a>
                         </div>
                     </div>
                 </div>

@@ -89,26 +89,52 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
 angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("hours-locations/hours-locations.tpl.html",
     "<!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->\n" +
-    "<div class=\"jumbotron bg-transparent\">\n" +
-    "    <h1>Hours &amp; Locations</h1>\n" +
-    "    <h2 class=\"hidden-xs hidden-sm\">{{library}}</h2>\n" +
-    "    <div class=\"dropdown multipage-menu visible-xs visible-sm\">\n" +
-    "        <button class=\"btn btn-default btn-lg dropdown-toggle\" id=\"locationMenu\"  type=\"button\">\n" +
-    "            {{library}}\n" +
-    "        </button>\n" +
-    "        <ul class=\"dropdown-menu nav nav-stacked hours-locations-menu\" role=\"menu\" aria-labelledby=\"locationMenu\">\n" +
-    "            <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
-    "                <ul class=\"nav nav-stacked\">\n" +
-    "                    <li><a href=\"#\" hours-href=\"{library: 'music', month: 0}\">Music Library</a></li>\n" +
-    "                    <li><a href=\"#\" hours-href=\"{library: 'media', month: 0}\">Sanford Media Center</a></li>\n" +
-    "                    <li><a href=\"#\" hours-href=\"{library: 'williams', month: 0}\">Williams Americana Collection</a></li>\n" +
-    "                </ul>\n" +
-    "            </li>\n" +
-    "            <li><a href=\"#\" hours-href=\"{library: 'rodgers', month: 0}\">Rodgers</a></li>\n" +
-    "            <li><a href=\"#\" hours-href=\"{library: 'mclure', month: 0}\">McLure</a></li>\n" +
-    "            <li><a href=\"#\" hours-href=\"{library: 'hoole', month: 0}\">Hoole</a></li>\n" +
-    "            <li><a href=\"#\" hours-href=\"{library: 'bruno', month: 0}\">Bruno</a></li>\n" +
-    "        </ul>\n" +
+    "<div class=\"jumbotron-header\">\n" +
+    "    <div class=\"jumbotron\">\n" +
+    "        <div class=\"container\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <div class=\"col-sm-8\">\n" +
+    "                    <h1>Hours & Locations</h1>\n" +
+    "                    <h2 class=\"hidden-xs hidden-sm\">{{library}}</h2>\n" +
+    "                    <div class=\"dropdown multipage-menu visible-xs visible-sm\">\n" +
+    "                        <button class=\"btn btn-default btn-lg dropdown-toggle\" id=\"locationMenu\"  type=\"button\">\n" +
+    "                            {{library}}\n" +
+    "                        </button>\n" +
+    "                        <ul class=\"dropdown-menu nav nav-stacked hours-locations-menu\" role=\"menu\" aria-labelledby=\"locationMenu\">\n" +
+    "                            <li><a href=\"#\" hours-href=\"{library: 'gorgas', month: 0}\">Gorgas</a>\n" +
+    "                                <ul class=\"nav nav-stacked\">\n" +
+    "                                    <li><a href=\"#\" hours-href=\"{library: 'music', month: 0}\">Music Library</a></li>\n" +
+    "                                    <li><a href=\"#\" hours-href=\"{library: 'media', month: 0}\">Sanford Media Center</a></li>\n" +
+    "                                    <li><a href=\"#\" hours-href=\"{library: 'williams', month: 0}\">Williams Americana Collection</a></li>\n" +
+    "                                </ul>\n" +
+    "                            </li>\n" +
+    "                            <li><a href=\"#\" hours-href=\"{library: 'rodgers', month: 0}\">Rodgers</a></li>\n" +
+    "                            <li><a href=\"#\" hours-href=\"{library: 'mclure', month: 0}\">McLure</a></li>\n" +
+    "                            <li><a href=\"#\" hours-href=\"{library: 'hoole', month: 0}\">Hoole</a></li>\n" +
+    "                            <li><a href=\"#\" hours-href=\"{library: 'bruno', month: 0}\">Bruno</a></li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
+    "                    <ul class=\"list-unstyled fa-ul\" ng-if=\"contact\">\n" +
+    "                        <li ng-if=\"contact.email\"><span class=\"fa fa-li fa-envelope\"></span> <a ng-href=\"mailto:{{contact.email}}\">{{contact.email}}</a></li>\n" +
+    "                        <li ng-if=\"contact.phone\">\n" +
+    "                            <span class=\"fa fa-li fa-phone\"></span>\n" +
+    "                            <ul class=\"list-unstyled\">\n" +
+    "                                <li ng-repeat=\"phone in contact.phone\">\n" +
+    "                                    <span ng-if=\"phone.dept\">{{phone.dept}}: </span>\n" +
+    "                                    <a ng-href=\"tel:+1-205-{{phone.number}}\" title=\"{{library}} phone number\">{{phone.number}}</a>\n" +
+    "                                </li>\n" +
+    "                            </ul>\n" +
+    "                        </li>\n" +
+    "                    </ul>\n" +
+    "                </div>\n" +
+    "                <div class=\"col-sm-4\">\n" +
+    "                    <div class=\"well\">\n" +
+    "                        <p class=\"lead\">What can {{library}} do for you?</p>\n" +
+    "                        <a ng-href=\"{{moreLink}}\" class=\"btn btn-primary\">Learn more <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +
     "<div class=\"container\">\n" +
@@ -131,6 +157,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "            </div>\n" +
     "        </div>\n" +
     "        <div class=\"col-md-9 col-md-pull-3\">\n" +
+    "\n" +
     "            <div class=\"row\">\n" +
     "                <div class=\"col-md-12\">\n" +
     "                    <div class=\"hours-calendar\"></div>\n" +
@@ -139,7 +166,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "\n" +
     "\n" +
     "            <div class=\"row\">\n" +
-    "                <div class=\"col-md-7\">\n" +
+    "                <div class=\"col-md-12\">\n" +
     "                    <div class=\"panel panel-default\">\n" +
     "                        <div class=\"panel-body\">\n" +
     "                            <ui-gmap-google-map center='center' zoom='zoom' id=\"map-canvas\" options=\"{disableDefaultUI: true}\">\n" +
@@ -157,26 +184,6 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                        </span>\n" +
     "                                </div>\n" +
     "                            </form>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"col-md-5\">\n" +
-    "                    <div class=\"panel panel-default\">\n" +
-    "                        <div class=\"panel-heading\">Contact</div>\n" +
-    "                        <div class=\"panel-body\">\n" +
-    "                            <ul class=\"list-unstyled fa-ul\" ng-if=\"contact\">\n" +
-    "                                <li ng-if=\"contact.email\"><span class=\"fa fa-li fa-envelope\"></span> <a ng-href=\"mailto:{{contact.email}}\">{{contact.email}}</a></li>\n" +
-    "                                <li ng-if=\"contact.phone\">\n" +
-    "                                    <span class=\"fa fa-li fa-phone\"></span>\n" +
-    "                                    <ul class=\"list-unstyled\">\n" +
-    "                                        <li ng-repeat=\"phone in contact.phone\">\n" +
-    "                                            <strong ng-if=\"phone.dept\">{{phone.dept}}: </strong>\n" +
-    "                                            {{phone.number}}\n" +
-    "                                        </li>\n" +
-    "                                    </ul>\n" +
-    "                                </li>\n" +
-    "                            </ul>\n" +
-    "                            <a ng-href=\"{{moreLink}}\" class=\"btn btn-block btn-default\">More about {{library}}</a>\n" +
     "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
