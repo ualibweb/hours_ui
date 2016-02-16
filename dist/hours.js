@@ -613,16 +613,19 @@ angular.module('ualib.hours')
                 hoursFactory.get({view: 'today'},
                     function(data){
                         var libraries = [];
-                        for (var lib in data.libraries){
-                            libraries.push(data.libraries[lib]);
-                            if (data.libraries[lib].hasOwnProperty('children')){
-                                libraries = libraries.concat(data.libraries[lib]['children']);
+                        if (angular.isDefined(data.today.libraries)) {
+                            for (var lib in data.today.libraries) {
+                                libraries.push(data.today.libraries[lib]);
+                                if (data.today.libraries[lib].hasOwnProperty('children')) {
+                                    libraries = libraries.concat(data.today.libraries[lib]['children']);
+                                }
                             }
+                            var library = $filter('filter')(libraries, {name: $scope.library});
+                            $scope.today = setStatus(library[0]);
+                            $element.addClass('loaded');
+                        } else {
+                            console.log("Error: could not retrieve today hours");
                         }
-                        var library = $filter('filter')(libraries, {name: $scope.library});
-                        $scope.today = setStatus(library[0]);
-                        $element.addClass('loaded');
-
                     },
                     function(msg){
                         console.log(msg);
