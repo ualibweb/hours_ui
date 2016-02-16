@@ -665,7 +665,7 @@ angular.module('hours.list', [])
 
         hoursFactory.get({view: 'today'},
             function(data){
-                var list = setStatus(data.libraries);
+                var list = setStatus(data.today.libraries);
                 $scope.hoursList = list;
             },
             function(msg){
