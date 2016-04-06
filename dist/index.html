@@ -5,51 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hours</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://localhost/wordpress/wp-content/themes/roots-ualib/assets/css/main.css">
-    <!--<link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.css">-->
-    <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main_bower.css">
+    <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.css">
+
+    <!-- env:dev --#>
     <link rel="stylesheet" type="text/css" href="hours.css">
-    <!--<link rel="stylesheet" type="text/css" href="hours.min.css">-->
+    <!-- env:dev:end -->
+
+    <!-- env:prod -->
+    <link rel="stylesheet" type="text/css" href="hours.min.css">
+    <!-- env:prod:end -->
+
+    <style>
+        .dev_prod_label {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
 
-<!--<div class="container">-->
-
-    <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-            <!--<div class="hours-list"></div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-            <!--<div class="well">-->
-                <!--<lib-hours-today library="gorgas"></lib-hours-today>-->
-                <!--<address>-->
-                    <!--<strong>Twitter, Inc.</strong><br>-->
-                    <!--918 University Boulevar<br>-->
-                    <!--San Francisco, CA 94107<br>-->
-                    <!--<span class="fa fa-phone"></span> (205) 348-6055-->
-                <!--</address>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row">-->
-        <!--<div class="col-md-9">-->
-            <!--<div class="hours-calendar"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-<!--</div>-->
 <div ng-view></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular-resource.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular-route.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular-animate.min.js"></script>
-<script src="https://rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-0.12.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.4/angular-filter.min.js"></script>
-<!--<script src="../assets/vendor/oclazyload/dist/ocLazyLoad.js"></script>-->
-<script src="vendor/lodash/lodash.js"></script>
-<script src="vendor/angular-google-maps/angular-google-maps.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-warning">
+                The links and directives below are for demo purposes only, and will not appear as part of the app unless specified
+                in a route's template.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Available app routes</h2>
+            <a class="btn btn-primary btn-lg" href="/#hours">View Hours &amp; Locations Route</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Hours List directive</h2>
+            <div class="hours-list"></div>
+        </div>
+    </div>
+</div>
+
+<div class="dev_prod_label">
+    <!-- env:prod -->
+    <div class="alert alert-danger">
+        Live
+    </div>
+    <!-- env:prod:end -->
+    <!-- env:dev --#>
+    <div class="alert alert-info">
+        Dev
+    </div>
+    <!-- env:dev:end -->
+</div>
+
+<!-- bower:js -->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-filter/dist/angular-filter.min.js"></script>
+<script src="../bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+<script src="../bower_components/lodash/lodash.js"></script>
+<script src="../bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../bower_components/angular-scroll/angular-scroll.js"></script>
+<script src="../bower_components/ualib-ui/dist/ualib-ui.js"></script>
+<!-- endbower -->
+
+<!-- env:dev --#>
 <script src="hours.js"></script>
-<!--<script src="hours.min.js"></script>-->
+<!-- env:dev:end -->
+
+<!-- env:prod -->
+<script src="hours.min.js"></script>
+<!-- env:prod:end -->
 </body>
 </html>
