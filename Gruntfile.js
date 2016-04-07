@@ -99,7 +99,7 @@ module.exports = function(grunt){
             },
             index: {
                 files: ['src/index.html'],
-                tasks: ['copy:index', 'dev_prod_switch:dev']
+                tasks: ['copy:demo', 'dev_prod_switch:dev']
             },
             livereload: {
                 // Here we watch the files the sass task will compile to
@@ -222,6 +222,9 @@ module.exports = function(grunt){
                 prereleaseName: false,
                 regExp: false
             }
+        },
+        auto_install: {
+            local: {}
         }
     });
 
@@ -229,6 +232,7 @@ module.exports = function(grunt){
         'dev-build', 'connect:dev', 'watch'
     ]);
     grunt.registerTask('dev-build', [
+        'auto_install',
         'html2js',
         'concat',
         'less:dev',
@@ -237,6 +241,7 @@ module.exports = function(grunt){
         'dev_prod_switch:dev'
     ]);
     grunt.registerTask('live-build', [
+        'auto_install',
         'html2js',
         'concat',
         'less:dev',
