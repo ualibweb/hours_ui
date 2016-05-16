@@ -4,6 +4,10 @@
   "deDependencies": {
     "grunt": "~0.4.5"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ualibweb/hours_ui.git"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "~0.5.0",
