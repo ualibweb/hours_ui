@@ -1,27 +1,23 @@
 angular.module('ualib.hours')
 
-    .config(['$routeProvider', 'uiGmapGoogleMapApiProvider', function($routeProvider, uiGmapGoogleMapApiProvider) {
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/hours', {
                 reloadOnSearch: false,
                 templateUrl: 'hours-locations/hours-locations.tpl.html',
                 controller: 'HoursLocationsCtrl'
             });
-
-        uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ',
-            mid: 'z4A8-271j5C8.kowwE312jycE',
-            v: '3.17',
-            libraries: ''
-        });
     }])
 
 
-    .controller('HoursLocationsCtrl', ['$scope', '$location', 'uiGmapIsReady', 'uiGmapGoogleMapApi', function($scope, $location, uiGmapIsReady, uiGmapGoogleMapApi){
-        $scope.center;
-        $scope.mapOpts = {
-            mapTypeControl: false
-        };
+    .controller('HoursLocationsCtrl', ['$scope', '$location', 'NgMap', function($scope, $location, NgMap){
+        var libChangeListener = $scope.$on('hoursLoaded', function(){
+            updateMap();
+        });
+        $scope.center = [33.211803, -87.546032];
+
+        $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE";
+
         $scope.loc = [
             {
                 id: 1,
@@ -141,17 +137,10 @@ angular.module('ualib.hours')
                 link: '/collections/williams/'
             }
         ];
-        var libChangeListener;
-
-        libChangeListener = $scope.$on('hoursLoaded', function(){
-            uiGmapGoogleMapApi.then(function(maps) {
-                updateMap();
-            });
-        });
 
 
         $scope.getDirections = function(){
-            var link = "https://www.google.com/maps/dir/" + $scope.directionsFrom + "/" + $scope.center.latitude + "," + $scope.center.longitude;
+            var link = "https://www.google.com/maps/dir/" + $scope.directionsFrom + "/" + $scope.center[0] + "," + $scope.center[1];
             window.open(link);
         };
 
@@ -162,10 +151,11 @@ angular.module('ualib.hours')
         function updateMap(){
             var lid = $scope.params.lid - 1;
             var loc = $scope.loc[lid];
-            $scope.center = {latitude: loc.latitude, longitude: loc.longitude};
+            $scope.center = [loc.latitude, loc.longitude];
             $scope.zoom = 18;
             $scope.contact = loc.contact;
             $scope.moreLink = loc.link;
+            $scope.library = loc.name;
         }
     }])
 
@@ -212,6 +202,7 @@ angular.module('ualib.hours')
                     scope.$apply(function(){
                         for (var param in href){
                             $location.search(param, href[param]);
+                            $location.replace();
                         }
                     });
                     elm.parent().addClass('active');

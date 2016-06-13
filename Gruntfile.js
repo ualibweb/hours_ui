@@ -1,6 +1,7 @@
 module.exports = function(grunt){
     // Load all tasks
     require('load-grunt-tasks')(grunt);
+    grunt.loadNpmTasks('main-bower-files');
     var serveStatic = require('serve-static');
 
     grunt.initConfig({
@@ -179,6 +180,11 @@ module.exports = function(grunt){
                 files: {
                     'dist/index.html': 'dist/index.html'
                 }
+            }
+        },
+        bower: {
+            flat: { /* flat folder/file structure */
+                dest: 'vendor'
             }
         },
         wiredep: {

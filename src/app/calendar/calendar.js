@@ -31,12 +31,14 @@ angular.module('hours.calendar', [])
             var mid = parseInt($scope.params.month) - 1;
             if (mid < 0) mid = 0;
             $location.search('month', mid);
+            $location.replace();
         };
 
         $scope.getNextMonth = function(){
             var mid = parseInt($scope.params.month) + 1;
             if (mid > 5) mid = 5;
             $location.search('month', mid);
+            $location.replace();
         };
 
         function processCalendar(cal){

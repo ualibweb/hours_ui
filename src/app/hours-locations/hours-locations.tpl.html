@@ -89,10 +89,16 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <ui-gmap-google-map center='center' zoom='zoom' id="map-canvas" options="{disableDefaultUI: true}">
-                                <ui-gmap-markers models="loc" coords="'self'" icon="'icon'">
-                                </ui-gmap-markers>
-                            </ui-gmap-google-map>
+                            <div map-lazy-load="https://maps.google.com/maps/api/js"
+                                 map-lazy-load-params="{{googleMapsUrl}}">
+                                <ng-map center='{{center}}' zoom='18' scrollwheel="false" id="map-canvas" map-initialized="updateMap()">
+                                    <marker
+                                            ng-repeat="l in loc"
+                                            no-watcher="true"
+                                            position="{{l.latitude}}, {{l.longitude}}"
+                                            title="{{l.name}}"></marker>
+                                </ng-map>
+                            </div>
                         </div>
 
                         <div class="panel-footer">
