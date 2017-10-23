@@ -5,8 +5,8 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "<div class=\"calendar\">\n" +
     "    <div class=\"form-group\">\n" +
     "        <div class=\"btn-group\">\n" +
-    "            <label class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"\">Typical Schedule</label>\n" +
-    "            <label class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"1\">Calendar &amp; Exceptions</label>\n" +
+    "            <button class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"\">Typical Schedule</button>\n" +
+    "            <button class=\"btn btn-default\" ng-model=\"calView\" btn-radio=\"1\">Calendar &amp; Exceptions</button>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "    <div ng-show=\"!calView\">\n" +
