@@ -15,21 +15,22 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "        </div>\n" +
     "        <table class=\"table table-bordered table-condensed\">\n" +
     "            <thead>\n" +
-    "            <tr>\n" +
-    "                <td>Sun</td>\n" +
-    "                <td>Mon</td>\n" +
-    "                <td>Tue</td>\n" +
-    "                <td>Wed</td>\n" +
-    "                <td>Thur</td>\n" +
-    "                <td>Fri</td>\n" +
-    "                <td>Sat</td>\n" +
-    "            </tr>\n" +
+    "                <tr>\n" +
+    "                    <th scope=\"col\" aria-label=\"Sunday\">Sun</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Monday\">Mon</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Tuesday\">Tues</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Wednesday\">Wed</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Thursday\">Thurs</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Friday\">Fri</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Saturday\">Sat</th>\n" +
+    "                </tr>\n" +
     "            </thead>\n" +
     "            <tbody>\n" +
     "            <tr>\n" +
-    "                <td ng-repeat=\"day in defHours[0].hours\">\n" +
+    "\n" +
+    "                <td ng-repeat=\"day in defHours[0].hours\" tabindex=\"0\">\n" +
     "                    <div class=\"hours\">\n" +
-    "                        {{day.hoursFrom}}\n" +
+    "                        {{day.hoursFrom}} to\n" +
     "                    <span ng-show=\"day.hoursFrom != day.hoursTo\">\n" +
     "                        <br>{{day.hoursTo}}\n" +
     "                    </span>\n" +

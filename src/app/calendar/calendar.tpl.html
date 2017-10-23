@@ -11,21 +11,22 @@
         </div>
         <table class="table table-bordered table-condensed">
             <thead>
-            <tr>
-                <td>Sun</td>
-                <td>Mon</td>
-                <td>Tue</td>
-                <td>Wed</td>
-                <td>Thur</td>
-                <td>Fri</td>
-                <td>Sat</td>
-            </tr>
+                <tr>
+                    <th scope="col" aria-label="Sunday">Sun</th>
+                    <th scope="col" aria-label="Monday">Mon</th>
+                    <th scope="col" aria-label="Tuesday">Tues</th>
+                    <th scope="col" aria-label="Wednesday">Wed</th>
+                    <th scope="col" aria-label="Thursday">Thurs</th>
+                    <th scope="col" aria-label="Friday">Fri</th>
+                    <th scope="col" aria-label="Saturday">Sat</th>
+                </tr>
             </thead>
             <tbody>
             <tr>
-                <td ng-repeat="day in defHours[0].hours">
+
+                <td ng-repeat="day in defHours[0].hours" tabindex="0">
                     <div class="hours">
-                        {{day.hoursFrom}}
+                        {{day.hoursFrom}} to
                     <span ng-show="day.hoursFrom != day.hoursTo">
                         <br>{{day.hoursTo}}
                     </span>
