@@ -26,10 +26,7 @@
 
                 <td ng-repeat="day in defHours[0].hours" tabindex="0">
                     <div class="hours">
-                        {{day.hoursFrom}} to
-                    <span ng-show="day.hoursFrom != day.hoursTo">
-                        <br>{{day.hoursTo}}
-                    </span>
+                        {{day.hoursFrom}}<span ng-show="day.hoursFrom != day.hoursTo"> to <br /> {{day.hoursTo}}</span>
                     </div>
                 </td>
             </tr>
