@@ -1,12 +1,14 @@
 angular.module('ualib.hours')
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         $routeProvider
             .when('/hours', {
                 reloadOnSearch: false,
                 templateUrl: 'hours-locations/hours-locations.tpl.html',
                 controller: 'HoursLocationsCtrl'
             });
+
+        $locationProvider.html5Mode(true);
     }])
 
 
