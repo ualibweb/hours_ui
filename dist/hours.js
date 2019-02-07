@@ -22,7 +22,7 @@ angular.module("calendar/calendar.tpl.html", []).run(["$templateCache", function
     "                    <th scope=\"col\" aria-label=\"Wednesday\">Wed</th>\n" +
     "                    <th scope=\"col\" aria-label=\"Thursday\">Thurs</th>\n" +
     "                    <th scope=\"col\" aria-label=\"Friday\">Fri</th>\n" +
-    "                    <th scope=\"col\" aria-label=\"Saturday\">Sat</th>\n" +
+    "                    <th scope=\"col\" aria-label=\"Saturday\">Saturday</th>\n" +
     "                </tr>\n" +
     "            </thead>\n" +
     "            <tbody>\n" +
