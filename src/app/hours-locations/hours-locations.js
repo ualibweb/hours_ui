@@ -122,19 +122,6 @@ angular.module('ualib.hours')
                     }]
                 },
                 link: '/using-the-library/sanford-media-center/'
-            },
-            {
-                id: 8,
-                name: "Williams Collection",
-                latitude: 33.211803,
-                longitude: -87.546032,
-                icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-                contact: {
-                    phone: [{
-                        number: '(205) 358-1489'
-                    }]
-                },
-                link: '/collections/williams/'
             }
         ];
 
