@@ -137,8 +137,8 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                </div>\n" +
     "                <div class=\"col-sm-4\">\n" +
     "                    <div class=\"well\">\n" +
-    "                            <p class=\"lead\">What can {{library}} do for you?</p>\n" +
-    "                        <a ng-href=\"{{moreLink}}\" class=\"btn btn-primary\">Learn more <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
+    "                        <p class=\"lead\">What can {{library}} do for you?</p>\n" +
+    "                        <a ng-href=\"{{moreLink}}\" class=\"btn btn-primary btn-primary-dark\">Learn more <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
