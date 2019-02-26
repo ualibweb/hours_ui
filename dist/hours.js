@@ -120,7 +120,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                            <li><a href=\"#\" hours-href=\"{library: 'mclure', month: 0}\">McLure</a></li>\n" +
     "                            <li><a href=\"#\" hours-href=\"{library: 'hoole', month: 0}\">Hoole</a></li>\n" +
     "                            <li><a href=\"#\" hours-href=\"{library: 'bruno', month: 0}\">Bruno</a></li>\n" +
-    "                        </ul> \n" +
+    "                        </ul>\n" +
     "                    </div>\n" +
     "                    <ul class=\"list-unstyled fa-ul\" ng-if=\"contact\">\n" +
     "                        <li ng-if=\"contact.email\"><span class=\"fa fa-li fa-envelope\"></span> <a ng-href=\"mailto:{{contact.email}}\">{{contact.email}}</a></li>\n" +
@@ -170,7 +170,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
-    " \n" +
+    "\n" +
     "             <div class=\"row\">\n" +
     "                <div class=\"col-md-12\">\n" +
     "                    <div class=\"panel panel-default\">\n" +
@@ -199,7 +199,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "            </div>  \n" +
+    "            </div>\n" +
     "\n" +
     "        </div>\n" +
     "    </div>\n" +
