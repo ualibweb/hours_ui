@@ -227,7 +227,7 @@ angular.module("lib-hours-today/lib-hours-today.tpl.html", []).run(["$templateCa
 
 angular.module("list/list.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("list/list.tpl.html",
-    "<div class=\"responsive-table caryl-test\">\n" +
+    "<div class=\"responsive-table\">\n" +
     "  <table class=\"table table-hover\">\n" +
     "    <tbody ng-repeat=\"lib in hoursList track by $index\">\n" +
     "    <tr ng-click=\"selectLib(lib)\">\n" +
