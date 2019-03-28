@@ -3,6 +3,7 @@ module.exports = function(grunt){
     require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     var serveStatic = require('serve-static');
 
     grunt.initConfig({
@@ -103,15 +104,15 @@ module.exports = function(grunt){
                 files: ['src/index.html'],
                 tasks: ['copy:demo', 'dev_prod_switch:dev']
             },
-          karma: {
-            files: ['src/app/**/*.js', 'test/*spec.js'],
-            tasks: ['karma:unit:run'] 
-          },
             livereload: {
                 // Here we watch the files the sass task will compile to
                 // These files are sent to the live reload server after sass compiles to them
                 options: { livereload: true },
                 files: ['dist/**/*', 'docs/**/*']
+            },
+            karma: {
+              files: ['src/app/**/*.js', 'test/*spec.js'],
+              tasks: ['karma:unit:run'] 
             }
         },
         connect: {
@@ -239,10 +240,14 @@ module.exports = function(grunt){
         },
       karma: {
         unit: {
-          configFile: 'my.conf.js',
+          configFile: 'karma.conf.js',
           background: true,
           singleRun: false
         }
+        // continuous: {
+          // background: true
+          // singleRun: true
+        // }
       }
     });
 
