@@ -244,10 +244,6 @@ module.exports = function(grunt){
           background: true,
           singleRun: false
         }
-        // continuous: {
-          // background: true
-          // singleRun: true
-        // }
       }
     });
 
