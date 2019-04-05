@@ -10,12 +10,17 @@ describe('hours app', () => {
           expect($tbody).to.have.length(5)
         })
     })
-  })
-  describe('hours page', () => {
     it('clicks the link for gorgas', () => {
       cy.contains('Gorgas Library').click()
+    })
+  })
+  describe('hours page', () => {
+    it('loads /hours page for gorgas', () => {
       cy.url()
         .should('include', '/hours?library=Gorgas%20Library')
+     })
+     it('checks for page elements', () => {
+       
       //'typical schedule' button should be active
       cy.get('.hours-calendar .btn-group')
         .children('.active')
