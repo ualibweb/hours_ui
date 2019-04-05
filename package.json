@@ -1,6 +1,9 @@
 {
   "name": "hours-ui",
   "version": "1.4.0",
+  "scripts": {
+    "cypress": "./node_modules/.bin/cypress open"
+  },
   "deDependencies": {
     "grunt": "~0.4.5"
   },
