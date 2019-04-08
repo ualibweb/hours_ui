@@ -20,7 +20,6 @@ describe('hours app', () => {
         .should('include', '/hours?library=Gorgas%20Library')
      })
      it('checks for page elements', () => {
-       
       //'typical schedule' button should be active
       cy.get('.hours-calendar .btn-group')
         .children('.active')
@@ -34,15 +33,35 @@ describe('hours app', () => {
     })
   })
   describe('calendar', () => {
-    it('clicks the button for calendar and exceptions', () => {
+    // need to show difference between typical schedule and calendar views
+    // ng-show="!calView" and ng-hide toggle for typical schedule
+    it('checks "typical schedule" behavior', () => {
+      //div with !calView should be visible
+      cy.get('[ng-show="!calView"]')
+        .should('be.visible')
+        .find('.hours')
+        .should(($hours) => {
+          expect($hours).to.have.length(7)
+        })
+        .should('contain', '12 pm to  2 am')
+      cy.get('[ng-show="calView"]')
+        .should('have.class', 'ng-hide')
+        .should('not.be.visible')
+    })
+    it('clicks the button for "calendar and exceptions"', () => {
       cy.contains('Calendar & Exceptions').click()
       //'calendar and exceptions' button should be active
       cy.get('.hours-calendar .btn-group')
         .children('.active')
         .should('contain', 'Calendar & Exceptions')
       //should show calendar
-    })
-    it('clicks next button on calednar', () => {
+      cy.get('[ng-show="calView"]')
+        .should('be.visible')
+        //should have so many rows
+        //should not show times on previous dates
+        //next month's days should be greyed out
+    })  
+    it('clicks next button on calendar', () => {
       //should view next month's calendar
     })
   })
@@ -54,6 +73,11 @@ describe('hours app', () => {
         .should('include', '/hours?library=hoole')
       //change view to new library
       //check all calendars/maps still loading
+    })
+  })
+  describe('map function', () => {
+    it('loads the location in google map', () => {
+     //who knows 
     })
   })
 })
