@@ -10,6 +10,16 @@ describe('hours app', () => {
           expect($tbody).to.have.length(5)
         })
     })
+    it('clicks link to full hours', () => {
+      cy.contains('Hours & Locations')
+        .click()
+      cy.url()
+        .should('include', '/#/hours')
+    })
+    it('goes back to homepage', () => {
+      cy.contains('The University of Alabama Libraries')
+        .click()
+    })
     it('clicks the link for gorgas', () => {
       cy.contains('Gorgas Library').click()
     })
@@ -19,6 +29,28 @@ describe('hours app', () => {
       cy.url()
         .should('include', '/hours?library=Gorgas%20Library')
      })
+    describe('checks the contact info', () => {
+      it('checks email link ends in "@ua.edu"', () => {
+        //check email link
+          cy.get('[ng-if="contact"]').within(() => {
+              cy.get('[ng-if="contact.email"] a')
+                .should('contain', '@ua.edu')
+          })
+      })
+      it('checks phone number includes "(205)"', () => {
+          cy.get('[ng-if="contact"]').within(() => {
+              cy.get('[ng-if="contact.phone"] a')
+                .should('contain', '(205)')
+          })
+      })
+      it('checks the "learn more" link is for gorgas', () => {
+          cy.get('.well')    
+            // .contains('[href]')
+            .should('contain', 'Gorgas')  
+          cy.get('.well a.btn')
+            .should('have.attr', 'href', '/libraries/gorgas/')
+      })
+    })
      it('checks for page elements', () => {
       //'typical schedule' button should be active
       cy.get('.hours-calendar .btn-group')
