@@ -7,9 +7,7 @@ describe('hours app', () => {
     it('has a table with 5 items', () => {
       cy.get('.hours-list table')
         .find('tbody')
-        .should(($tbody) => {
-          expect($tbody).to.have.length(5)
-        })
+        .should('have.length', 5)
     })
     it('clicks link to full hours', () => {
       cy.contains('Hours & Locations')
@@ -31,9 +29,19 @@ describe('hours app', () => {
       cy.url()
         .should('include', '/hours?library=Gorgas%20Library')
      })
+    it('checks the breadcrumbs', () => {
+      cy.get('.breadcrumb li')
+        .should('have.length', 2)
+        .first()
+        .find('a')
+        .should('have.attr', 'href', '/#/home')
+        // .next()
+        // .find('a')
+        // .should('have.att', 'href', '/#/hours')
+        // need to figure out how to achieve this without too much hardship
+    })
     describe('checks the contact info', () => {
       it('email link ends in "@ua.edu"', () => {
-        //check email link
           cy.get('[ng-if="contact"]').within(() => {
               cy.get('[ng-if="contact.email"] a')
                 .should('contain', '@ua.edu')
@@ -47,7 +55,6 @@ describe('hours app', () => {
       })
       it('"learn more" link is for gorgas', () => {
           cy.get('.well')    
-            // .contains('[href]')
             .should('contain', 'Gorgas')  
           cy.get('.well a.btn')
             .should('have.attr', 'href', '/libraries/gorgas/')
@@ -62,12 +69,12 @@ describe('hours app', () => {
        it('should show table of hours', () => {
           cy.get('.hours-calendar table')
             .should('exist')
-            .should('be.visible')
+            .and('be.visible')
        })
        it('should load a map', () => {
           cy.get('ng-map')
             .should('exist')
-            .should('be.visible')
+            .and('be.visible')
        })
     })
   })
@@ -80,13 +87,11 @@ describe('hours app', () => {
       cy.get('[ng-show="!calView"]')
         .should('be.visible')
         .find('.hours')
-        .should(($hours) => {
-          expect($hours).to.have.length(7)
-        })
-        .should('contain', '12 pm to  2 am')
+        .should('have.length', 7)
+        .and('contain', '12 pm to  2 am')
       cy.get('[ng-show="calView"]')
         .should('have.class', 'ng-hide')
-        .should('not.be.visible')
+        .and('not.be.visible')
     })
     it('clicks the button for "calendar and exceptions"', () => {
       cy.contains('Calendar & Exceptions').click()
