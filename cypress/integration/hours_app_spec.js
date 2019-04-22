@@ -35,10 +35,6 @@ describe('hours app', () => {
         .first()
         .find('a')
         .should('have.attr', 'href', '/#/home')
-        // .next()
-        // .find('a')
-        // .should('have.att', 'href', '/#/hours')
-        // need to figure out how to achieve this without too much hardship
     })
     describe('checks the contact info', () => {
       it('email link ends in "@ua.edu"', () => {
@@ -98,13 +94,44 @@ describe('hours app', () => {
         .should('have.class', 'active')
       //should show calendar
       cy.get('[ng-show="calView"]')
-        .should('be.visible')
-        //should have so many rows
-        //should not show times on previous dates
-        //next month's days should be greyed out
+        .should('be.visible').within(() => {
+          cy.get('table tbody').children()
+            .should('have.length', 6)
+          //should not show times on previous dates
+          cy.get('td.today').prev().children('.hours')
+            .should('not.have.attr', 'ng-if' )
+          //next month's days should be greyed out
+          cy.get('td').last()
+            .should('have.class', 'not-current-month')
+        })
     })  
-    it('clicks next button on calendar', () => {
-      //should view next month's calendar
+    it('cannot click the previous button on calendar', () => {
+      //previous arrow should be un-clickable
+      cy.get('[ng-show="calView"]')
+        .find('button').first()
+        .should('be.disabled')
+    })
+    it('clicks next button and shows next month calendar', () => {
+      cy.get('[ng-show="calView"]')
+        .find('button').last()
+        .click()
+      cy.url()
+        .should('include', '&month=1')
+    })
+    it('clicks previous button and shows current caledar', () => {
+      cy.get('[ng-show="calView"]')
+        .find('button').first()
+        .click()
+      cy.url()
+        .should('include', '&month=0')
+    })
+  })
+
+  describe('map function', () => {
+    it('loads the location in google map', () => {
+      cy.get('ng-map')
+        .should('be.visible')
+        .should('have.attr', 'center', '[33.211803,-87.546032]')
     })
   })
 
@@ -114,15 +141,55 @@ describe('hours app', () => {
       .click()
       cy.url()
         .should('include', '/hours?library=hoole')
-      //change view to new library
       //check all calendars/maps still loading
     })
-  })
-
-  describe('map function', () => {
-    it('loads the location in google map', () => {
-     //who knows 
+    describe('checks hero UI', () => {
+      it('checks the breadcrumbs', () => {
+        cy.get('.breadcrumb li')
+          .should('have.length', 2)
+          .first()
+          .find('a')
+          .should('have.attr', 'href', '/#/home')
+      })
+      it('email link ends in "@bama.ua.edu"', () => {
+          cy.get('[ng-if="contact"]').within(() => {
+              cy.get('[ng-if="contact.email"] a')
+                .should('contain', '@bama.ua.edu')
+          })
+      })
+      it('phone number includes "(205)"', () => {
+          cy.get('[ng-if="contact"]').within(() => {
+              cy.get('[ng-if="contact.phone"] a')
+                .should('contain', '(205)')
+          })
+      })
+      it('"learn more" link is for hoole', () => {
+          cy.get('.well')    
+            .should('contain', 'Hoole')  
+          cy.get('.well a.btn')
+            .should('have.attr', 'href', '/libraries/hoole/')
+      })
+      
+    })
+    it('checks calendar visibility and conditionals', () => {
+      cy.get('[ng-show="calView"]')
+        .should('be.visible').within(() => {
+          cy.get('table tbody').children()
+            .should('have.length', 6)
+          //should not show times on previous dates
+          cy.get('td.today').prev().children('.hours')
+            .should('not.have.attr', 'ng-if' )
+          //next month's days should be greyed out
+          cy.get('td').last()
+            .should('have.class', 'not-current-month')
+        })
+      
+    })
+    it('checks map loads with new coordinates', () => {
+      cy.get('ng-map')
+        .should('be.visible')
+        .should('have.attr', 'center', '[33.210927,-87.543182]')
+      
     })
   })
-
 })
