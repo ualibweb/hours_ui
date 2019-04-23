@@ -69,6 +69,14 @@ After getting feed back, then changes are ready to go live.
 2. If there are no build or Javascript errors, and the live build demo functions as expected, commit and push the new live build to Github.
 
 
+## Running tests
+
+### Cypress (end-to-end tests)
+
+1. To start the Cypress testing, first make sure you've run `grunt` and the app is live in your browser. Cypress needs the server running to run its tests.
+1. Run `npm run cypress` in another terminal tab/window
+1. In the window that pops up, click "run all specs", which will launch a new Chrome browser and run all the tests from the `cypress/integration` directory
+
 ## Documenting the source
 
 Comments must adhere to the following syntaxes:
