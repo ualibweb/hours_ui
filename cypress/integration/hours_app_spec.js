@@ -4,10 +4,10 @@ describe('hours app', () => {
     it('successfully loads', () => {
       cy.visit('/')
     })
-    it('has a table with 5 items', () => {
-      cy.get('.hours-list table')
-        .find('tbody')
-        .should('have.length', 5)
+    it('has a table with 7 items', () => {
+      cy.get('.hours-list table tbody')
+        .find('tr')
+        .should('have.length', 7)
     })
     it('clicks link to full hours', () => {
       cy.contains('Hours & Locations')

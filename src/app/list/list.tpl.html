@@ -1,29 +1,31 @@
 <div class="responsive-table">
   <table class="table table-hover">
-    <tbody ng-repeat="lib in hoursList track by $index">
-    <tr ng-click="selectLib(lib)">
-      <td><a href="#" ng-href="#/hours?library={{lib.name}}">{{lib.name}}</a></td>
-      <td>{{lib.hours}}</td>
-      <td><span ng-class="lib.status.css">{{lib.status.text}}</span></td>
-      <td>
-        <span class="fa fa-lg fa-info-circle" ng-if="lib.description" tooltip="{{lib.description}}"></span>
-      </td>
-    </tr>
-        <tr class="hours-list-child" ng-repeat="child in lib.children track by $index" ng-click="selectLib(child)">
-          <td><a ng-href="#/hours?library={{child.name}}">{{child.name}}</a></td>
-          <td>{{child.hours}}</td>
-          <td><span ng-class="child.status.css">{{child.status.text}}</span></td>
-          <td>
-            <span class="fa fa-lg fa-info-circle" ng-if="child.description" tooltip="{{child.description}}"></span>
-          </td>
-        </tr>
-        <!-- Williams Collection data is removed from the Database; therefore the data is hardcoded !-->
-       <tr ng-if="lib.name == 'Gorgas Library'" class="hours-list-child">
-            <td><a ng-href="https://www.lib.ua.edu/collections/williams/"> Williams Collection</a></td>
-            <td> Call for appt.</td>
-            <td> (205) 348-0500 </td>
-        </tr>
-    </tr>
+    <thead>
+      <tr>
+        <th>Library</th>
+        <th>Hours</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat-start="lib in hoursList track by $index" ng-click="selectLib(lib)">
+        <td><a href="#" ng-href="#/hours?library={{lib.name}}">{{lib.name}}</a></td>
+        <td>{{lib.hours}}</td>
+        <td><span ng-class="lib.status.css">{{lib.status.text}}</span></td>
+        <td><span class="fa fa-lg fa-info-circle" ng-if="lib.description" tooltip="{{lib.description}}"></span></td>
+      </tr>
+      <tr class="hours-list-child" ng-repeat="child in lib.children track by $index" ng-click="selectLib(child)">
+        <td><a ng-href="#/hours?library={{child.name}}">{{child.name}}</a></td>
+        <td>{{child.hours}}</td>
+        <td><span ng-class="child.status.css">{{child.status.text}}</span></td>
+        <td><span class="fa fa-lg fa-info-circle" ng-if="child.description" tooltip="{{child.description}}"></span></td>
+      </tr>
+      <!-- Williams Collection data is removed from the Database; therefore the data is hardcoded !-->
+      <tr ng-repeat-end ng-if="lib.name == 'Gorgas Library'" class="hours-list-child">
+        <td><a ng-href="https://www.lib.ua.edu/collections/williams/">Williams Collection</a></td>
+        <td> Call for appt.</td>
+        <td> (205) 348-0500 </td>
+      </tr>
     </tbody>
   </table>
 </div>
