@@ -77,7 +77,7 @@ angular
                 dept: "Reference & Circulation",
               },
             ],
-            email: "scenglib@bama.ua.edu",
+            email: "scenglib@ua.edu",
           },
           link: "/libraries/rodgers/",
         },
