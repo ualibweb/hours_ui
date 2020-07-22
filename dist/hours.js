@@ -241,7 +241,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "      <tr ng-repeat-start=\"lib in hoursList track by $index\" ng-click=\"selectLib(lib)\">\n" +
     "        <td><a href=\"#\" ng-href=\"#/hours?library={{lib.name}}\">{{lib.name}}</a></td>\n" +
     "        <td>{{lib.hours}}</td>\n" +
-    "        <td><span ng-class=\"lib.status.css\">{{lib.status.text}}</span></td>\n" +
+    "        <td><span ng-if=\"lib.openFrom !== '-3'\" ng-class=\"lib.status.css\">{{lib.status.text}}</span></td>\n" +
     "      </tr>\n" +
     "      <tr class=\"hours-list-child\" ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
     "        <td><a ng-href=\"#/hours?library={{child.name}}\">{{child.name}}</a></td>\n" +
@@ -252,7 +252,7 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "      <tr ng-repeat-end ng-if=\"lib.name == 'Gorgas Library'\" class=\"hours-list-child\">\n" +
     "        <td><a ng-href=\"https://www.lib.ua.edu/collections/williams/\">Williams Collection</a></td>\n" +
     "        <td class=\"ng-binding\">By appointment</td>\n" +
-    "        <td><span ng-class=\"lib.status.css\" class=\"ng-binding label label-danger\">closed</span></td>\n" +
+    "        <td>&nbsp;</td>\n" +
     "      </tr>\n" +
     "    </tbody>\n" +
     "  </table>\n" +
