@@ -134,8 +134,7 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                            </ul>\n" +
     "                        </li>\n" +
     "                        <li ng-if=\"contact.appointment\">\n" +
-    "                            <span class=\"fa fa-li fa-exclamation-circle\"></span>\n" +
-    "                          {{contact.appointment}}\n" +
+    "                            <span class=\"fa fa-li fa-exclamation-circle\"></span> {{contact.appointment}}\n" +
     "                        </li>\n" +
     "                    </ul>\n" +
     "                </div>\n" +
