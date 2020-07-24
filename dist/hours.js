@@ -501,6 +501,7 @@ angular
             //     dept: "Front Desk",
             //   },
             // ],
+            appointment: "By appointment only",
             email: "archives@ua.edu",
             alert: [
               {
