@@ -88,12 +88,14 @@ angular
           longitude: -87.543182,
           icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           contact: {
-            phone: [
-              {
-                number: "(205) 348-0500",
-                dept: "Front Desk",
-              },
-            ],
+            // remove phone number in favor of "by appointment" July 2020
+            // phone: [
+            //   {
+            //     number: "(205) 348-0500",
+            //     dept: "Front Desk",
+            //   },
+            // ],
+            appointment: "By appointment only",
             email: "archives@ua.edu",
             alert: [
               {
