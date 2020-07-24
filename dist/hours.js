@@ -133,6 +133,10 @@ angular.module("hours-locations/hours-locations.tpl.html", []).run(["$templateCa
     "                                </li>\n" +
     "                            </ul>\n" +
     "                        </li>\n" +
+    "                        <li ng-if=\"contact.appointment\">\n" +
+    "                            <span class=\"fa fa-li fa-exclamation-circle\"></span>\n" +
+    "                          {{contact.appointment}}\n" +
+    "                        </li>\n" +
     "                    </ul>\n" +
     "                </div>\n" +
     "                <div class=\"col-sm-4\">\n" +
