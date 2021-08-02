@@ -1,121 +1,211 @@
 <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCdXuKwZiDx5W2uP8plV5d-o-jLQ5UQtIQ&mid=z4A8-271j5C8.kowwE312jycE'></script>-->
 
-
 <div class="jumbotron-header">
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb" typeof="BreadcrumbList" vocab="http://schema.org/">
-                        <li><a title="Go to The University of Alabama Libraries." href="/#/home" class="home">The University of Alabama Libraries</a></li>
-                        <li><a title="Go to Hours." href="/#/hours" class="post post-page">Hours</a></li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8">
-                    <h1>Hours & Locations</h1>
-                    <h2 class="hidden-xs hidden-sm">{{library}}</h2>
-                    <div class="dropdown multipage-menu visible-xs visible-sm">
-                        <button class="btn btn-default btn-lg dropdown-toggle" id="locationMenu"  type="button">
-                            {{library}}
-                        </button>
-                        <ul class="dropdown-menu nav nav-stacked hours-locations-menu" role="menu" aria-labelledby="locationMenu">
-                            <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
-                                <ul class="nav nav-stacked">
-                                    <li><a href="#" hours-href="{library: 'music', month: 0}">Music Library</a></li>
-                                    <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
-                                    <li><a href="#" hours-href="{library: 'williams', month: 0}">Williams Americana Collection</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
-                            <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
-                            <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
-                            <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
-                        </ul>
-                    </div>
-                    <ul class="list-unstyled fa-ul" ng-if="contact">
-                        <li ng-if="contact.email"><span class="fa fa-li fa-envelope"></span> <a ng-href="mailto:{{contact.email}}">{{contact.email}}</a></li>
-                        <li ng-if="contact.phone">
-                            <span class="fa fa-li fa-phone"></span>
-                            <ul class="list-unstyled">
-                                <li ng-repeat="phone in contact.phone">
-                                    <span ng-if="phone.dept">{{phone.dept}}: </span>
-                                    <a ng-href="tel:+1-205-{{phone.number}}" title="{{library}} phone number">{{phone.number}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-if="contact.appointment">
-                          <span class="fa fa-li fa-exclamation-circle"></span>{{contact.appointment}}
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <div class="well">
-                        <p class="lead">What can {{library}} do for you?</p>
-                        <a ng-href="{{moreLink}}" class="btn btn-primary btn-primary-dark">Learn more <span class="fa fa-fw fa-info-circle"></span></a>
-                    </div>
-                </div>
-            </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ol
+            class="breadcrumb"
+            typeof="BreadcrumbList"
+            vocab="http://schema.org/"
+          >
+            <li>
+              <a
+                title="Go to The University of Alabama Libraries."
+                href="/#/home"
+                class="home"
+                >The University of Alabama Libraries</a
+              >
+            </li>
+            <li>
+              <a title="Go to Hours." href="/#/hours" class="post post-page"
+                >Hours</a
+              >
+            </li>
+          </ol>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <h1>Hours & Locations</h1>
+          <h2 class="hidden-xs hidden-sm">{{library}}</h2>
+          <div class="dropdown multipage-menu visible-xs visible-sm">
+            <button
+              class="btn btn-default btn-lg dropdown-toggle"
+              id="locationMenu"
+              type="button"
+            >
+              {{library}}
+            </button>
+            <ul
+              class="dropdown-menu nav nav-stacked hours-locations-menu"
+              role="menu"
+              aria-labelledby="locationMenu"
+            >
+              <li>
+                <a href="#" hours-href="{library: 'gorgas', month: 0}"
+                  >Gorgas</a
+                >
+                <ul class="nav nav-stacked">
+                  <li>
+                    <a href="#" hours-href="{library: 'music', month: 0}"
+                      >Music Library</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" hours-href="{library: 'media', month: 0}"
+                      >Sanford Media Center</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" hours-href="{library: 'williams', month: 0}"
+                      >Williams Americana Collection</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" hours-href="{library: 'rodgers', month: 0}"
+                  >Rodgers</a
+                >
+              </li>
+              <li>
+                <a href="#" hours-href="{library: 'mclure', month: 0}"
+                  >McLure</a
+                >
+              </li>
+              <li>
+                <a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a>
+              </li>
+              <li>
+                <a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a>
+              </li>
+            </ul>
+          </div>
+          <ul class="list-unstyled fa-ul" ng-if="contact">
+            <li ng-if="contact.email">
+              <span class="fa fa-li fa-envelope"></span>
+              <a ng-href="mailto:{{contact.email}}">{{contact.email}}</a>
+            </li>
+            <li ng-if="contact.phone">
+              <span class="fa fa-li fa-phone"></span>
+              <ul class="list-unstyled">
+                <li ng-repeat="phone in contact.phone">
+                  <span ng-if="phone.dept">{{phone.dept}}: </span>
+                  <a
+                    ng-href="tel:+1-205-{{phone.number}}"
+                    title="{{library}} phone number"
+                    >{{phone.number}}</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li ng-if="contact.alert">
+              <span class="fa fa-li fa-exclamation-circle"></span
+              >{{contact.alert}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p class="lead">What can {{library}} do for you?</p>
+            <a ng-href="{{moreLink}}" class="btn btn-primary btn-primary-dark"
+              >Learn more <span class="fa fa-fw fa-info-circle"></span
+            ></a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-3 col-md-push-9">
-            <div class="hidden-xs hidden-sm">
-                <ul class="nav nav-pills nav-stacked hours-locations-menu">
-                    <li><a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#" hours-href="{library: 'media', month: 0}">Sanford Media Center</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a></li>
-                    <li><a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a></li>
-                    <li><a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a></li>
-                    <li><a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-9 col-md-pull-3">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="hours-calendar"></div>
-                </div>
-            </div>
-
-
-             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div map-lazy-load="https://maps.google.com/maps/api/js"
-                                 map-lazy-load-params="{{googleMapsUrl}}">
-                                <ng-map center='{{center}}' zoom='18' scrollwheel="false" id="map-canvas" map-initialized="updateMap()">
-                                    <marker
-                                            ng-repeat="l in loc"
-                                            no-watcher="true"
-                                            position="{{l.latitude}}, {{l.longitude}}"
-                                            title="{{l.name}}"></marker>
-                                </ng-map>
-                            </div>
-                        </div>
-
-                        <div class="panel-footer">
-                            <form ng-submit="getDirections()">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="directionsFrom" placeholder="Your address or location" required>
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default" target="_gmaps">Get Directions <span class="fa fa-external-link"></span></button>
-                        </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <div class="row">
+    <div class="col-md-3 col-md-push-9">
+      <div class="hidden-xs hidden-sm">
+        <ul class="nav nav-pills nav-stacked hours-locations-menu">
+          <li>
+            <a href="#" hours-href="{library: 'gorgas', month: 0}">Gorgas</a>
+            <ul class="nav nav-pills nav-stacked">
+              <li>
+                <a href="#" hours-href="{library: 'media', month: 0}"
+                  >Sanford Media Center</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" hours-href="{library: 'rodgers', month: 0}">Rodgers</a>
+          </li>
+          <li>
+            <a href="#" hours-href="{library: 'mclure', month: 0}">McLure</a>
+          </li>
+          <li>
+            <a href="#" hours-href="{library: 'hoole', month: 0}">Hoole</a>
+          </li>
+          <li>
+            <a href="#" hours-href="{library: 'bruno', month: 0}">Bruno</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    <div class="col-md-9 col-md-pull-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="hours-calendar"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div
+                map-lazy-load="https://maps.google.com/maps/api/js"
+                map-lazy-load-params="{{googleMapsUrl}}"
+              >
+                <ng-map
+                  center="{{center}}"
+                  zoom="18"
+                  scrollwheel="false"
+                  id="map-canvas"
+                  map-initialized="updateMap()"
+                >
+                  <marker
+                    ng-repeat="l in loc"
+                    no-watcher="true"
+                    position="{{l.latitude}}, {{l.longitude}}"
+                    title="{{l.name}}"
+                  ></marker>
+                </ng-map>
+              </div>
+            </div>
+
+            <div class="panel-footer">
+              <form ng-submit="getDirections()">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    ng-model="directionsFrom"
+                    placeholder="Your address or location"
+                    required
+                  />
+                  <span class="input-group-btn">
+                    <button
+                      type="submit"
+                      class="btn btn-default"
+                      target="_gmaps"
+                    >
+                      Get Directions <span class="fa fa-external-link"></span>
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

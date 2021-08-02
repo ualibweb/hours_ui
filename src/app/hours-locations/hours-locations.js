@@ -88,21 +88,23 @@ angular
           longitude: -87.543182,
           icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           contact: {
-            // remove phone number in favor of "by appointment" July 2020
-            // phone: [
-            //   {
-            //     number: "(205) 348-0500",
-            //     dept: "Front Desk",
-            //   },
-            // ],
-            appointment: "By appointment only",
-            email: "archives@ua.edu",
-            alert: [
+            phone: [
               {
-                type: "info",
-                msg: "For reference questions",
+                number: "(205) 348-0500",
+                dept: "Front Desk",
               },
             ],
+            //appointment: "By appointment only",
+            email: "archives@ua.edu",
+            alert:
+              "In June 2021, we started moving some materials to our off-site Archival Facility (AF). Those materials will require two business days for retrieval and delivery for use in our Hoole Library reading room. Please contact us for more information.",
+            // updated aug 2021 for new messaging
+            //   [
+            //   {
+            //     type: "info",
+            //     msg: "For reference questions",
+            //   },
+            // ],
           },
           link: "/libraries/hoole/",
         },
