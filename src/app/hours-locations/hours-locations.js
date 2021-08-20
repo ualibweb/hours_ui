@@ -43,7 +43,7 @@ angular
                 dept: "Circulation",
               },
             ],
-            email: "gorgasinfo@ua.edu",
+            // email: "gorgasinfo@ua.edu",
           },
           link: "/libraries/gorgas/",
         },
