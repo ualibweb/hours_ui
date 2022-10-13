@@ -56,7 +56,7 @@ angular
           contact: {
             phone: [
               {
-                number: "(205) 348-1080",
+                number: "(205) 348-1086",
               },
             ],
 
