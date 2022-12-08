@@ -22,7 +22,7 @@
     "grunt-contrib-copy": "~0.8.0",
     "grunt-contrib-less": "~1.0.1",
     "grunt-contrib-uglify": "~0.9.2",
-    "grunt-contrib-watch": "~1.0.0",
+    "grunt-contrib-watch": "~1.1.0",
     "grunt-dev-prod-switch": "~0.1.8",
     "grunt-html2js": "~0.2.9",
     "grunt-ng-annotate": "~1.0.1",
