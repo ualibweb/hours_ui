@@ -337,16 +337,10 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "        <td>{{lib.hours}}</td>\n" +
     "        <td><span ng-if=\"lib.openFrom !== '-3'\" ng-class=\"lib.status.css\">{{lib.status.text}}</span></td>\n" +
     "      </tr>\n" +
-    "      <tr class=\"hours-list-child\" ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
+    "      <tr class=\"hours-list-child\" ng-repeat-end ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
     "        <td><a ng-href=\"#/hours?library={{child.name}}\">{{child.name}}</a></td>\n" +
     "        <td>{{child.hours}}</td>\n" +
     "        <td><span ng-class=\"child.status.css\">{{child.status.text}}</span></td>\n" +
-    "      </tr>\n" +
-    "      <!-- Williams Collection data is removed from the Database; therefore the data is hardcoded !-->\n" +
-    "      <tr ng-repeat-end ng-if=\"lib.name == 'Gorgas Library'\" class=\"hours-list-child\">\n" +
-    "        <td><a ng-href=\"https://www.lib.ua.edu/collections/williams/\">Williams Collection</a></td>\n" +
-    "        <td class=\"ng-binding\">By appointment</td>\n" +
-    "        <td>&nbsp;</td>\n" +
     "      </tr>\n" +
     "    </tbody>\n" +
     "  </table>\n" +
@@ -490,9 +484,9 @@ angular.module('hours.common', [
 angular.module('common.hours', [])
 
     .factory('hoursFactory', ['$resource', function($resource){
-        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view", {}, {
+        return $resource("https://wwwdev2.lib.ua.edu/libhours2/api/:view", {}, {
             get: {
-                cache: true
+                cache: false
             }
         });
     }]);
@@ -802,6 +796,7 @@ angular.module('hours.list', [])
 
         hoursFactory.get({view: 'today'},
             function(data){
+                console.log(data)
                 var list = setStatus(data.today.libraries);
                 $scope.hoursList = list;
             },
