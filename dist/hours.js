@@ -484,9 +484,9 @@ angular.module('hours.common', [
 angular.module('common.hours', [])
 
     .factory('hoursFactory', ['$resource', function($resource){
-        return $resource("https://wwwdev2.lib.ua.edu/libhours2/api/:view", {}, {
+        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view", {}, {
             get: {
-                cache: false
+                cache: true
             }
         });
     }]);
@@ -796,7 +796,6 @@ angular.module('hours.list', [])
 
         hoursFactory.get({view: 'today'},
             function(data){
-                console.log(data)
                 var list = setStatus(data.today.libraries);
                 $scope.hoursList = list;
             },
