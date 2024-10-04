@@ -342,6 +342,11 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "        <td>{{child.hours}}</td>\n" +
     "        <td><span ng-class=\"child.status.css\">{{child.status.text}}</span></td>\n" +
     "      </tr>\n" +
+    "      <tr ng-repeat-end ng-if=\"lib.name == 'Gorgas Library'\" class=\"hours-list-child\">\n" +
+    "        <td><a ng-href=\"https://www.lib.ua.edu/collections/williams/\">Williams Collection</a></td> \n" +
+    "        <td class=\"ng-binding\">By appointment</td>\n" +
+    "        <td>&nbsp;</td>\n" +
+    "      </tr>\n" +
     "    </tbody>\n" +
     "  </table>\n" +
     "</div>\n" +

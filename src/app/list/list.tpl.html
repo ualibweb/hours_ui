@@ -19,6 +19,11 @@
         <td>{{child.hours}}</td>
         <td><span ng-class="child.status.css">{{child.status.text}}</span></td>
       </tr>
+      <tr ng-repeat-end ng-if="lib.name == 'Gorgas Library'" class="hours-list-child">
+        <td><a ng-href="https://www.lib.ua.edu/collections/williams/">Williams Collection</a></td> 
+        <td class="ng-binding">By appointment</td>
+        <td>&nbsp;</td>
+      </tr>
     </tbody>
   </table>
 </div>
